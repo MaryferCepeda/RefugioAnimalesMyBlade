@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
-                    <a href="register" title="Iniciar Sesión">Inicio de Sesión</a>
+                    <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
                 </nav>
             </header>
 
