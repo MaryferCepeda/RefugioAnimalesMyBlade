@@ -1,0 +1,368 @@
+body {
+    min-height: 100vh;
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #FF8C00, #FF4500); /* Degradado con tonos más oscuros de naranja */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte la altura total */
+}
+
+.header-Izquierda {
+    display: flex;
+    align-items: center;
+}
+
+.header-Izquierda .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.header-Izquierda h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px;
+    flex-wrap: wrap;
+    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    font-size: 20px;
+}
+
+nav a:hover {
+    background-color: #777;
+    border-radius: 20px;
+}
+
+.header-Derecha a {
+    margin-left: 10px;
+}
+
+.header-Derecha img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.header-Derecha img:hover {
+    transform: scale(1.1);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: 0; /* Asegura que el dropdown esté al mismo nivel que los otros elementos */
+    z-index: 2; /* Asegura que el menú esté sobre otros elementos */
+}
+
+.dropdown-content {
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+    position: absolute;
+    background: linear-gradient(45deg, #FF8C00, #FF4500);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 0; /* Asegura que no haya un espacio innecesario */
+}
+
+.dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logo {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer {
+    background: linear-gradient(45deg, #000000, #2f2f2f); /* Degradado de colores negros */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    z-index: 10;
+}
+
+footer p {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Fuente de texto */
+    font-weight: bold;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: #fff; /* Línea decorativa */
+    border-radius: 5px;
+}
+
+footer p span {
+    color: #ff9800; /* Color dorado para resaltar */
+}
+
+.logo {
+    padding: 15px 0 10px 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+/* Contenedor de productos */
+.productos_contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adaptación de la cuadrícula */
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+
+/* Tarjeta de cada producto */
+.tarjeta {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efecto hover de la tarjeta */
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del producto */
+.imagen_producto {
+    width: 100%;
+    height: 200px; /* Establece una altura fija para las imágenes */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-bottom: 1px solid #ccc;
+}
+
+/* Precio del producto */
+.precio {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d9534f;
+    margin: 10px 0;
+}
+
+/* Descripción corta */
+.descripcion {
+    font-size: 14px;
+    color: #555;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de la cantidad */
+.cantidad {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.cantidad input {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Botón de añadir */
+.añadir {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: auto; /* Asegura que el botón se ubique al final de la tarjeta */
+}
+
+.añadir:hover {
+    background-color: #218838;
+}
+
+/* Asegúrate de que el contenedor del carrito tenga un margen superior adecuado */
+.carrito-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* Centrado del icono y cantidad */
+    margin-top: 20px;  /* Espacio debajo del header */
+    position: fixed;
+    top: 80px; /* Asegúrate de que esté debajo del header */
+    right: 20px; /* Ajusta según el espacio deseado en el lado derecho */
+    background-color: #fff; /* Fondo blanco para que se vea bien */
+    border-radius: 50%; /* Forma circular si lo prefieres */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para un efecto elevado */
+    z-index: 10; /* Asegura que esté sobre otros elementos */
+}
+
+.carrito-img {
+    width: 40px;  /* Ajusta según el tamaño del icono */
+    height: 40px;
+}
+
+.carrito-cantidad {
+    position: absolute;
+    top: -5px;  /* Asegura que esté arriba del carrito */
+    right: -5px;  /* Ajusta para que esté en la esquina */
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* Estilos de la ventana emergente */
+.mensaje {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-contenedor {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn:hover {
+    background-color: #0056b3;
+}
+
+strong {
+    color: red;
+}
+/* Estilos para el popup del carrito */
+.popup-carrito {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+    border-radius: 8px;
+}
+
+.popup-carrito ul {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-carrito li {
+    margin-bottom: 10px;
+}
+
+.popup-carrito button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.popup-carrito button:hover {
+    background-color: #e0e0e0;
+}

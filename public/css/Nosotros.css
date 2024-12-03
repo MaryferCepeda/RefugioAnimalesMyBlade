@@ -1,0 +1,342 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #FF8C00, #FF4500); /* Degradado con tonos más oscuros de naranja */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte la altura total */
+}
+
+.header-Izquierda {
+    display: flex;
+    align-items: center;
+}
+
+.header-Izquierda .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.header-Izquierda h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px;
+    flex-wrap: wrap;
+    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    font-size: 20px;
+}
+
+nav a:hover {
+    background-color: #777;
+    border-radius: 20px;
+}
+
+.header-Derecha a {
+    margin-left: 10px;
+}
+
+.header-Derecha img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.header-Derecha img:hover {
+    transform: scale(1.1);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: 0; /* Asegura que el dropdown esté al mismo nivel que los otros elementos */
+    z-index: 2; /* Asegura que el menú esté sobre otros elementos */
+}
+
+.dropdown-content {
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+    position: absolute;
+    background: linear-gradient(45deg, #FF8C00, #FF4500);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 0; /* Asegura que no haya un espacio innecesario */
+}
+
+.dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+.Nosotros-Titulo {
+    background-image: url("https://www.whiskas.com.mx/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4861/files/2022-11/eduquer-son-Chaton-comment-bien-eduquer-son-Chaton.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0 0 10px whitesmoke;
+}
+
+h1 {
+    color: whitesmoke;
+}
+
+h2 {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    z-index: 4;
+    font-size: 3.7rem;
+}
+
+.Nosotros {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Vision, .Mision {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 18px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.Vision {
+    background-color: #ff9800; /* Orange */
+}
+
+.Mision {
+    background-color: #2196f3; /* DodgerBlue */
+}
+
+
+.Vision h4, .Mision h4 {
+    font-family: 'Arial', sans-serif;
+    font-size: 34px;
+    color: #fff;
+}
+
+.Vision .Vision-P, .Mision .Mision-P {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #fff;
+    margin-top: 10px;
+}
+.Body2 {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.Refugio-Historia {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px auto; /* Ajustado para reducir el margen superior e inferior */
+    width: 80%;
+    max-width: 1000px;
+    box-shadow: 0 4px 8px rgba(28, 17, 9, 0.5);
+    padding: 20px;
+    background-color: #f8f4f1;
+    border-radius: 10px;
+    flex-direction: row;
+}
+
+.Refugio-Contenido {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 350px);
+}
+
+.Refugio-Historia h4 {
+    color: #ff9800;
+    font-size: 29px;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.Historia_Refugio_P {
+    font-family: 'Arial', sans-serif;
+    color: #1c1109;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.Imagen-Historia_Refugio {
+    width: 330px;
+    height: auto;
+    object-fit: cover;
+    padding: 15px 50px 0 10px;
+    margin-right: 30px;
+    border-radius: 10px;
+}
+
+.RedesSociales {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0; /* Ajustado para reducir el margen superior e inferior */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.RedesSociales h5 {
+    font-family: "Roboto Light", sans-serif;
+    color: black;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.RedesSociales-iframeWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.RedesSociales-iframeContainer {
+    flex: 0 0 auto;
+    margin: 0 10px;
+}
+
+.RedesSociales-iframeContainer iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+hr {
+    width: 100%;
+    height: 10px;
+    border: none;
+    background-color: black;
+}
+
+
+.Tecnologias {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.Tecnologias h5 {
+    font-family: "Roboto Light", sans-serif;
+    color: black;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.Tecnologias-lista {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Tecnologias-lista li {
+    margin: 0 20px;
+}
+
+.Tecnologias-lista img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+footer {
+    background: linear-gradient(45deg, #000000, #2f2f2f); /* Degradado de colores negros */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    z-index: 10;
+}
+
+footer p {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Fuente de texto */
+    font-weight: bold;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: #fff; /* Línea decorativa */
+    border-radius: 5px;
+}
+
+footer p span {
+    color: #ff9800; /* Color dorado para resaltar */
+}
+

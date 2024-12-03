@@ -1,0 +1,241 @@
+.logo {
+    flex: 0 0 auto; /* Asegura que la imagen no se estire o reduzca */
+    margin-right: 20px; /* Ajusta la separación de la imagen */
+    height: 100px;
+    width: 100px;
+    padding: 15px 0 10px 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #FF8C00, #FF4500); /* Degradado con tonos más oscuros de naranja */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte la altura total */
+}
+
+.header-Izquierda {
+    display: flex;
+    align-items: center;
+}
+
+.header-Izquierda .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.header-Izquierda h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px;
+    flex-wrap: wrap;
+    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    font-size: 20px;
+}
+
+nav a:hover {
+    background-color: #777;
+    border-radius: 20px;
+}
+
+.header-Derecha a {
+    margin-left: 10px;
+}
+
+.header-Derecha img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.header-Derecha img:hover {
+    transform: scale(1.1);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: 0; /* Asegura que el dropdown esté al mismo nivel que los otros elementos */
+    z-index: 2; /* Asegura que el menú esté sobre otros elementos */
+}
+
+.dropdown-content {
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+    position: absolute;
+    background: linear-gradient(45deg, #FF8C00, #FF4500);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 0; /* Asegura que no haya un espacio innecesario */
+}
+
+.dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropbtn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dropbtn:hover {
+    color: #f1f1f1;
+}
+
+.caja {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.caja:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.texto-izquierda {
+    max-width: 60%;
+}
+
+.titulo-fundacion {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.llamada-accion {
+    font-size: 1.2rem;
+    color: #ff4500;
+}
+
+.ubicacion-resaltada {
+    font-size: 1.2rem;
+    color: #2196f3;
+}
+
+.horario-visitas {
+    font-style: italic;
+    color: #4caf50;
+}
+
+.texto-limpio {
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.redes-sociales {
+    font-size: 1rem;
+    color: #9c27b0;
+}
+
+.correo-contacto {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e91e63;
+}
+
+.instagram-container {
+    max-width: 35%;
+}
+
+.caja.mapa iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+}
+footer {
+    background: linear-gradient(45deg, #000000, #2f2f2f); /* Degradado de colores negros */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    z-index: 10;
+}
+
+footer p {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Fuente de texto */
+    font-weight: bold;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: #fff; /* Línea decorativa */
+    border-radius: 5px;
+}
+
+footer p span {
+    color: #ff9800; /* Color dorado para resaltar */
+}
+

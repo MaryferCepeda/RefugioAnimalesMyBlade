@@ -8,10 +8,13 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "paypal/rest-api-sdk-php": "*",
+        "srmklive/paypal": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "laravel/breeze": "^2.2",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
