@@ -1,17 +1,131 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Lista de Usuarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+        }
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+        header {
+            width: 100%;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav {
+            width: 200px;
+            background-color: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            
+            left: 0;
+            height: calc(100% - 60px); /* Altura restante después del header */
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #495057;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+            margin-left: 350px;
+            margin-top: 200px;
+        }
+
+        h1 {
+            color: #343a40;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            text-decoration: none;
+            background-color: #007bff;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .table td {
+            background-color: #fff;
+        }
+
+        .mt-4 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Administrar</h1>
+    </header>
+    <nav>
+        <a href="{{ route('users.index') }}">Usuarios</a>
+        <a href="{{ route('productos.index') }}">Productos</a>
+        <a href="{{ route('proveedores.index') }}">Proovedores</a>
+        <a href="{{ route('empleados.index') }}">Empleados</a>
+        <a href="{{ route('ventas.index') }}">Ventas</a>
+        <a href="{{ route('donaciones.index') }}">Donaciones</a>
+    </nav>
+    
+</body>
+</html>

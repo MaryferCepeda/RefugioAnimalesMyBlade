@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function esAdmin()
+    {
+        return $this->hasOne(Administrador::class);
+    }
 }

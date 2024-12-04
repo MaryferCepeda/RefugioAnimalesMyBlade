@@ -6,31 +6,52 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add_shopping_cart" />
     <link rel="stylesheet" href="{{ asset('css/Productos.css') }}">
     <title>Peluditos | Tienda de Apoyo</title>
-
 </head>
 <body>
     <header>
         <div class="header-Izquierda">
             <a href="/">
-                <img class="logo" src="{{ asset('Imagenes/logo.png') }}" alt="Logo de la página">
+                <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página" />
             </a>
             <h1>Peluditos</h1>
         </div>
+
         <nav>
             <a href="/" title="Este es el menu principal">Inicio</a>
             <a href="/Nosotros" title="Conócenos">Nosotros</a>
-            <div class="dropdown">
-                <a href="#" class="dropbtn">Formas de Apoyo</a>
-                <div class="dropdown-content">
+
+            <div class="abajo">
+                <a href="#" class="dropbtn">Formas de Apoyoㅤ⧪</a>
+                <div class="abajo-contenido">
                     <a href="/Donar">Donativos</a>
                     <a href="/Productos">Productos</a>
                 </div>
             </div>
+
             <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
-            <a href="register" title="Iniciar Sesión">Inicio de Sesión</a>
+
+            @guest
+            <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
+            @endguest
+
+            @auth
+            <div class="dropdown">
+                <img src="https://m.media-amazon.com/images/G/01/CST/Prism/Avatars/img_profile_avatar_animals_panda_circ.png" alt="Avatar" class="avatar" />
+                <div class="dropdown-content">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Cerrar Sesión
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+            @endauth
         </nav>
     </header>
 
+    <!-- Mostrar carrito solo si está autenticado -->
+    @auth
     <div class="cart-icon" onclick="toggleCart()">
         🛒
         <span class="cart-badge" id="cart-badge">0</span>
@@ -41,62 +62,43 @@
         <div id="cart-items"></div>
         <div id="cart-total" class="cart-total">Total: $0.00</div>
         <div class="cart-actions">
-            <button class="btn-pagar" onclick="pagar()">Pagar</button>
+            <div id="paypal-button-container"></div>
         </div>
     </div>
+    @endauth
 
     <main>
-    <div class="productos_contenedor">
-    @foreach ($productos as $producto)
-        <div class="tarjeta" data-id="{{ $producto->id }}" data-precio="{{ $producto->precio }}" data-nombre="{{ $producto->nombre }}">
-            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Producto" class="imagen_producto"/>
-            <div class="precio">${{ $producto->precio }}</div>
-            <div class="cantidad">
-                <label for="qty-{{ $producto->id }}">Cantidad:</label>
-                <input type="number" id="qty-{{ $producto->id }}" value="1" min="1"/>
-            </div>
-            <div class="descripcion">
-                <p>{{ $producto->descripcion }}</p>
-            </div>
-            <button class="añadir" onclick="addToCart({{ $producto->id }})">
-                <span class="material-symbols-outlined">add_shopping_cart</span>
-            </button>
-        </div>
-    @endforeach
-</div>
-
-
+        <div class="productos_contenedor">
             @foreach ($productos as $producto)
-            <div class="tarjeta" data-id="{{ $producto['id'] }}" data-precio="{{ $producto['precio'] }}" data-nombre="{{ $producto['descripcion'][0] }}">
-    <img src="{{ asset($producto['imgSrc']) }}" alt="Producto" class="imagen_producto"/>
-    <div class="precio">${{ $producto['precio'] }}</div>
-    <div class="cantidad">
-        <label for="qty-{{ $producto['id'] }}">Cantidad:</label>
-        <input type="number" id="qty-{{ $producto['id'] }}" value="1" min="1"/>
-    </div>
-    <div class="descripcion">
-        <p>{{ $producto['descripcion'][0] }}</p>
-    </div>
-    <button class="añadir" onclick="addToCart({{ $producto['id'] }})">
-        <span class="material-symbols-outlined">add_shopping_cart</span>
-    </button>
-</div>
-
-    @endforeach
+            <div class="tarjeta" data-id="{{ $producto->id }}" data-precio="{{ $producto->precio }}" data-nombre="{{ $producto->nombre }}">
+                <img src="{{ asset($producto->imagen) }}" alt="Producto" class="imagen_producto"/>
+                <div class="precio">${{ $producto->precio }}</div>
+                <div class="cantidad">
+                    <label for="qty-{{ $producto->id }}">Cantidad:</label>
+                    <input type="number" id="qty-{{ $producto->id }}" value="1" min="1"/>
+                </div>
+                <div class="descripcion">
+                    <p>{{ $producto->descripcion }}</p>
+                </div>
+                <button class="añadir" onclick="addToCart({{ $producto->id }})">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div> 
+            @endforeach
         </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Refugio de Mascotas. Todos los derechos reservados.</p>
-        <div class="footer-social">
-            <a href="https://github.com/MaryferCepeda/RefugioAnimalesMyRe.git" target="_blank" rel="noopener noreferrer">
-                <img src="{{ asset('Imagenes/Githud.png') }}" alt="GitHub" title="GitHub">
+        <div class="header-Derecha">
+            <a href="https://github.com/MaryferCepeda/RefugioAnimalesMyBlade.git" target="_blank" rel="noopener noreferrer">
+                <img src="/Imagenes/Githud.png" alt="GitHub" title="GitHub" />
             </a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="{{ asset('Imagenes/facebook.png') }}" alt="Facebook" title="Facebook">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" alt="Facebook" title="Facebook" />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <img src="{{ asset('Imagenes/youtube.png') }}" alt="YouTube" title="YouTube">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube" title="YouTube" />
             </a>
         </div>
     </footer>
@@ -105,20 +107,24 @@
         let cart = [];
 
         function addToCart(productId) {
-            const product = document.querySelector(`.tarjeta[data-id="${productId}"]`);
-            const quantity = parseInt(document.getElementById(`qty-${productId}`).value);
-            const name = product.getAttribute('data-nombre');
-            const price = parseFloat(product.getAttribute('data-precio'));
+            @auth
+                const product = document.querySelector(`.tarjeta[data-id="${productId}"]`);
+                const quantity = parseInt(document.getElementById(`qty-${productId}`).value);
+                const name = product.getAttribute('data-nombre');
+                const price = parseFloat(product.getAttribute('data-precio'));
 
-            const existingItem = cart.find(item => item.id === productId);
+                const existingItem = cart.find(item => item.id === productId);
 
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({ id: productId, name, price, quantity });
-            }
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    cart.push({ id: productId, name, price, quantity });
+                }
 
-            updateCartDisplay();
+                updateCartDisplay();
+            @else
+                alert("Para comprar, por favor inicie sesión.");
+            @endauth
         }
 
         function removeFromCart(productId) {
@@ -159,6 +165,8 @@
             cartElement.style.display = cart.length > 0 ? 'block' : 'none';
             cartBadge.textContent = itemCount;
             cartBadge.style.display = itemCount > 0 ? 'block' : 'none';
+
+            updatePaypalButton(total);
         }
 
         function toggleCart() {
@@ -166,31 +174,82 @@
             cartElement.style.display = cartElement.style.display === 'none' ? 'block' : 'none';
         }
 
-        function pagar() {
-            alert('¡Gracias por tu compra!');
-            cart = [];
-            updateCartDisplay();
-        }
-        function actualizarProducto(id, nuevoPrecio) {
-    fetch(`/productos/${id}/update`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({ precio: nuevoPrecio })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Precio actualizado correctamente');
-            location.reload(); // Recargar para reflejar cambios
-        }
-    });
-}
+        // Cargar el SDK de PayPal solo una vez
+        const script = document.createElement("script");
+        script.src = "https://www.paypal.com/sdk/js?client-id=AZJNZBBo4Bp0loiWE3ctruV_s9zsMbB6mXjShdx6MYsiwC43M3gBtUrxqjFjeFQ42jzTZWIbaBpPqhSi&locale=es_ES&components=buttons,hosted-fields";
+        script.async = true;
+        script.onload = function () {
+            initPayPalButton(0); // Inicializar el botón de PayPal con un total de 0
+        };
+        document.body.appendChild(script);
 
+        function initPayPalButton(totalAmount) {
+            const paypalContainer = document.getElementById('paypal-button-container');
+            paypalContainer.innerHTML = ''; // Limpiamos el contenedor para evitar duplicados
+
+            paypal.Buttons({
+                fundingSource: paypal.FUNDING.CARD,
+                style: {
+                    layout: 'vertical',
+                    color: 'black',
+                    shape: 'rect',
+                    label: 'pay'
+                },
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: totalAmount.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert("Pago completado por " + details.payer.name.given_name);
+                        cart = [];
+                        updateCartDisplay();
+                    });
+                }
+            }).render("#paypal-button-container");
+        }
+
+        function updatePaypalButton(totalAmount) {
+            initPayPalButton(totalAmount);
+        }
     </script>
-    
+
+    <style>
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ffff;
+        }
+    </style>
 </body>
 </html>
-

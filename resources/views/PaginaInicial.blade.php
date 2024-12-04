@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="fondo">
         <div>
             <header>
                 <div class="header-Izquierda">
@@ -22,19 +22,40 @@
                 <nav>
                     <a href="/" title="Este es el menu principal">Inicio</a>
                     <a href="/Nosotros" title="Conócenos">Nosotros</a>
-                    <div class="dropdown">
-                        <a href="#" class="dropbtn">Formas de Apoyo</a>
-                        <div class="dropdown-content">
+
+                    <div class="abajo">
+                        <a href="#" class="dropbtn">Formas de Apoyoㅤ⧪</a>
+                        <div class="abajo-contenido">
                             <a href="/Donar">Donativos</a>
                             <a href="/Productos">Productos</a>
                         </div>
                     </div>
+
                     <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
-                    <a href="register" title="Iniciar Sesión">Inicio de Sesión</a>
+
+                    @guest
+                    <!-- Mostrar si el usuario NO está autenticado -->
+                    <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
+                    @endguest
+
+                    @auth
+                    <!-- Mostrar si el usuario ESTÁ autenticado -->
+                    <div class="dropdown">
+                        <img src="https://m.media-amazon.com/images/G/01/CST/Prism/Avatars/img_profile_avatar_animals_panda_circ.png" alt="Avatar" class="avatar" />
+                        <div class="dropdown-content">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Cerrar Sesión
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                    @endauth
                 </nav>
             </header>
 
-            <main class="fondo-negro">
+            <main class="fondo-negro animate">
                 <section class="historia">
                     <div class="imagen-container">
                         <img class="mascota-imagen" src="/Imagenes/Gato_inicio.webp" alt="Imagen del gato Miau" />
@@ -61,9 +82,9 @@
             </main>
 
             <div class="Body2">
-                <section class="intro">
+                <section class="intro animate">
                     <p class="Parrafos">
-                        En <strong>Refugio Esperanza</strong>, nuestra misión es brindar una segunda oportunidad a los
+                        En <strong>Refugio Peluditos</strong>, nuestra misión es brindar una segunda oportunidad a los
                         animales que necesitan un hogar lleno de amor.
                     </p>
                     <ul>
@@ -77,7 +98,7 @@
                     </p>
                 </section>
 
-                <section class="impact">
+                <section class="impact animate">
                     <h2> Nuestro Impacto en Números </h2>
                     <p class="Parrafos"><strong>+950 vidas rescatadas.</strong></p>
                     <p class="Parrafos">
@@ -89,7 +110,7 @@
                         camino.</p>
                 </section>
 
-                <section class="problem">
+                <section class="problem animate">
                     <h2> El Problema que Enfrentamos</h2>
                     <p class="Parrafos">Miles de perros y gatos:</p>
                     <ul>
@@ -103,10 +124,10 @@
                     </p>
                 </section>
 
-                <section class="solution">
+                <section class="solution animate">
                     <h2> Nuestra Solución y Compromiso</h2>
                     <p class="Parrafos">
-                        En <strong>Refugio Esperanza</strong>, nos comprometemos a ser la voz de los que no pueden
+                        En <strong>Refugio Peluditos</strong>, nos comprometemos a ser la voz de los que no pueden
                         hablar:
                     </p>
                     <ul>
@@ -117,7 +138,7 @@
                     </ul>
                 </section>
 
-                <section class="cta">
+                <section class="cta animate">
                     <h2> ¿Cómo Puedes Ayudar?</h2>
                     <ul>
                         <li><strong>Adopta:</strong> Dale un hogar a un peludo que lo necesita.</li>
@@ -133,45 +154,69 @@
             <footer>
                 <p>&copy; 2024 Peluditos Refugio de Mascotas. Todos los derechos reservados.</p>
                 <div class="header-Derecha">
-                    <a href="https://github.com/MaryferCepeda/RefugioAnimalesMyRe.git" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/MaryferCepeda/RefugioAnimalesMyBlade.git" target="_blank" rel="noopener noreferrer">
                         <img src="/Imagenes/Githud.png" alt="GitHub" title="GitHub" />
                     </a>
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                        <img src="/Imagenes/facebook.png" alt="Facebook" title="Facebook" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" alt="Facebook" title="Facebook" />
                     </a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" target="_blank" rel="noopener noreferrer">
                         <img src="/Imagenes/youtube.png" alt="YouTube" title="YouTube" />
                     </a>
                 </div>
             </footer>
         </div>
-
-        <!-- Mensaje de bienvenida controlado con JavaScript -->
-        <div id="mensaje" class="mensaje">
-            <div class="mensaje-contenedor">
-                <h2>¡Bienvenido a nuestra página!</h2>
-                <p>
-                    ¡Bienvenido a Refugio Esperanza! Estamos felices de que nos visites. Pero recuerda que esta
-                    página fue creada con fines educativos. No nos deposites ni un peso ;)
-                </p>
-                <button class="close-btn" onclick="cerrarMensaje()">Entendido</button>
-            </div>
-        </div>
     </div>
 
     <script>
-        // Función para cerrar el mensaje
         function cerrarMensaje() {
             document.getElementById('mensaje').style.display = 'none';
         }
 
-        // Esperar un par de segundos para mostrar el mensaje
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('mensaje').style.display = 'flex';
-            }, 1000); // Aparecerá después de 1 segundo
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            });
+            document.querySelectorAll('.animate').forEach(element => observer.observe(element));
+        });
     </script>
+     <style>
+        /* Estilo del avatar y menú desplegable */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ffff;
+        }
+    </style>
 </body>
 
 </html>
