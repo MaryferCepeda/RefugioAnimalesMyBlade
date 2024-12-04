@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
-                    <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
+                    <a href="register" title="Iniciar Sesión">Inicio de Sesión</a>
                 </nav>
             </header>
 
@@ -168,7 +168,7 @@
         // Esperar un par de segundos para mostrar el mensaje
         window.onload = function() {
             setTimeout(function() {
-                document.getElementById('mensaje').style.display = 'block';
+                document.getElementById('mensaje').style.display = 'flex';
             }, 1000); // Aparecerá después de 1 segundo
         }
     </script>

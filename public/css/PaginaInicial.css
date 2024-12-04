@@ -108,7 +108,7 @@ nav a:hover {
     padding: 15px;
     display: none;
     position: absolute;
-    background: linear-gradient(45deg, #FF8C00, #FF4500);
+    background: #ffffff;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -116,7 +116,7 @@ nav a:hover {
 }
 
 .dropdown-content a {
-    color: #fff;
+    color: rgb(255, 152, 0);
     text-decoration: none;
     display: block;
 }
