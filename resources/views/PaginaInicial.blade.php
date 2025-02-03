@@ -151,6 +151,9 @@
                 </section>
             </div>
 
+            <button class = "btn Accsecibilidad">
+            
+            </button>
             <footer>
                 <p>&copy; 2024 Peluditos Refugio de Mascotas. Todos los derechos reservados.</p>
                 <div class="header-Derecha">
@@ -185,7 +188,7 @@
         });
     </script>
      <style>
-        /* Estilo del avatar y menú desplegable */
+    
         .avatar {
             width: 40px;
             height: 40px;

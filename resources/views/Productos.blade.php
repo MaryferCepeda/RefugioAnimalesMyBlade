@@ -50,7 +50,6 @@
         </nav>
     </header>
 
-    <!-- Mostrar carrito solo si está autenticado -->
     @auth
     <div class="cart-icon" onclick="toggleCart()">
         🛒
@@ -179,13 +178,13 @@
         script.src = "https://www.paypal.com/sdk/js?client-id=AZJNZBBo4Bp0loiWE3ctruV_s9zsMbB6mXjShdx6MYsiwC43M3gBtUrxqjFjeFQ42jzTZWIbaBpPqhSi&locale=es_ES&components=buttons,hosted-fields";
         script.async = true;
         script.onload = function () {
-            initPayPalButton(0); // Inicializar el botón de PayPal con un total de 0
+            initPayPalButton(0);
         };
         document.body.appendChild(script);
 
         function initPayPalButton(totalAmount) {
             const paypalContainer = document.getElementById('paypal-button-container');
-            paypalContainer.innerHTML = ''; // Limpiamos el contenedor para evitar duplicados
+            paypalContainer.innerHTML = ''; 
 
             paypal.Buttons({
                 fundingSource: paypal.FUNDING.CARD,
