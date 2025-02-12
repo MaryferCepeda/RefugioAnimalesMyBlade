@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peluditos</title>
     <link rel="stylesheet" href="{{ asset('css/PaginaInicial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/btn_Accesibilidad.css') }}">
 </head>
 
 <body>
@@ -18,11 +18,9 @@
                     </a>
                     <h1>Peluditos</h1>
                 </div>
-
                 <nav>
                     <a href="/" title="Este es el menu principal">Inicio</a>
                     <a href="/Nosotros" title="Conócenos">Nosotros</a>
-
                     <div class="abajo">
                         <a href="#" class="dropbtn">Formas de Apoyoㅤ⧪</a>
                         <div class="abajo-contenido">
@@ -30,16 +28,11 @@
                             <a href="/Productos">Productos</a>
                         </div>
                     </div>
-
                     <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
-
                     @guest
-                    <!-- Mostrar si el usuario NO está autenticado -->
                     <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
                     @endguest
-
                     @auth
-                    <!-- Mostrar si el usuario ESTÁ autenticado -->
                     <div class="dropdown">
                         <img src="https://m.media-amazon.com/images/G/01/CST/Prism/Avatars/img_profile_avatar_animals_panda_circ.png" alt="Avatar" class="avatar" />
                         <div class="dropdown-content">
@@ -54,7 +47,7 @@
                     @endauth
                 </nav>
             </header>
-
+            
             <main class="fondo-negro animate">
                 <section class="historia">
                     <div class="imagen-container">
@@ -150,10 +143,27 @@
                         mundo más amable para nuestros amigos peludos.</p>
                 </section>
             </div>
+    
+        <button id="botonAccesibilidad" class="boton-accesibilidad" aria-label="Opciones de accesibilidad">
+            <img src="/Imagenes/accessibilidad.png" alt="Icono de accesibilidad" width="30" height="30">
+        </button>
 
-            <button class = "btn Accsecibilidad">
-            
-            </button>
+        <div id="panelAccesibilidad" class="panel-accesibilidad">
+            <h2>Opciones de Accesibilidad</h2>
+            <label for="tamanoFuente">Tamaño de letra:</label>
+            <label>
+            <label>
+            <label>
+            <input type="range" id="tamanoFuente" min="1" max="4" step="1" value="2">
+                <div class="etiquetas-tamano-fuente">
+                    <span>Pequeña</span>
+                    <span>Media</span>
+                    <span>Grande</span>
+                    <span>Mega</span>
+                </div>
+            </div>
+        </div>
+
             <footer>
                 <p>&copy; 2024 Peluditos Refugio de Mascotas. Todos los derechos reservados.</p>
                 <div class="header-Derecha">
@@ -184,12 +194,11 @@
                     }
                 });
             });
-            document.querySelectorAll('.animate').forEach(element => observer.observe(element));
+            document.querySelectorAll('.animate').forEach(element => observer.observe(element));        
         });
     </script>
-     <style>
-    
-        .avatar {
+    <style>  
+      .avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -220,6 +229,7 @@
             background-color: #ffff;
         }
     </style>
+   
+   <script src="{{ asset('js/btn_Accesibilidad.js') }}"></script>
 </body>
-
 </html>

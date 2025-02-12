@@ -4,8 +4,8 @@
     padding: 2rem;
 }
 .logo {
-    flex: 0 0 auto; /* Asegura que la imagen no se estire o reduzca */
-    margin-right: 20px; /* Ajusta la separación de la imagen */
+    flex: 0 0 auto;
+    margin-right: 20px;
     height: 100px;
     width: 100px;
     padding: 15px 0 10px 20px;
@@ -366,10 +366,6 @@ footer p span {
     font-size: 1.1em;
     margin: 5px 0;
 }
-
-
-
-
 strong {
     color: #333;
     font-weight: bold;

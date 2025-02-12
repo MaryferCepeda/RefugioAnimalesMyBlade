@@ -1,0 +1,382 @@
+.fondo-negro {
+    background-color: #F9F2E7;
+    color: black;
+    padding: 2rem;
+}
+.logo {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    height: 100px;
+    width: 100px;
+    padding: 15px 0 10px 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white;
+    background-color: #f9f9f9;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    color: rgb(255, 152, 0);
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.header-Izquierda {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.header-Izquierda h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav a {
+    color: rgb(255, 152, 0);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    font-size: 20px;
+}
+
+nav a:hover {
+    background-color: #777;
+    border-radius: 20px;
+    color:#F9F2E7;
+}
+
+.header-Derecha a {
+    margin-left: 10px;
+}
+
+.header-Derecha img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.header-Derecha img:hover {
+    transform: scale(1.1);
+}
+
+.abajo{
+    position: relative;
+    display: inline-block;
+    top: 0;
+    z-index: 2;
+}
+
+.abajo-contenido {
+    top: 30px;
+    left: 15px;
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+.abajo-contenido a {
+    color: #ff9800;
+    text-decoration: none;
+    display: block;
+}
+
+.abajo-contenido a:hover {
+    color: white;
+    background-color: #777;
+}
+
+.abajo:hover .abajo-contenido {
+    display: block;
+}
+
+
+
+main {
+    margin-top: 60px;
+    background-color: #F9F2E7;
+    color: black;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+footer {
+    background: linear-gradient(45deg, #000000, #2f2f2f);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+footer p {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+footer p span {
+    color: #ff9800;
+}
+
+/* Sección Historia */
+.historia {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    background: #F9F2E7;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+/* Imagen */
+.imagen-container {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mascota-imagen {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    border: 4px solid #ff9800;
+}
+
+/* Contenedor de descripción */
+.descripcion-container {
+    font-family: 'Arial', sans-serif;
+    flex: 2 1 400px;
+    text-align: left;
+}
+
+.descripcion-container h2 {
+    color: #ff9800;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.descripcion-container p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: black;
+}
+
+/* Botón */
+.btn-conocer {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: #ff9800;
+    color: #121212;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-conocer a {
+    text-decoration: none;
+    color: #121212;
+}
+
+.btn-conocer:hover {
+    background: #f44336;
+}
+
+.Body2{
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.intro, .impact, .problem, .solution, .cta{
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+/* Sección de introducción */
+.intro {
+    text-align: center;
+}
+
+.intro p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.intro ul {
+    list-style: none;
+    padding: 0;
+}
+
+.intro ul li {
+    font-size: 1.1em;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.intro ul li::before {
+    content: "❤";
+    margin-right: 10px;
+}
+
+/* Sección de impacto */
+.impact h2 {
+    color: #ff9800;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.impact p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #444;
+}
+
+/* Sección del problema */
+.problem h2 {
+    color: #f44336;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.problem ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.problem ul li {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+/* Sección de solución */
+.solution h2 {
+    color: #4caf50;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.solution ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.solution ul li {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+.cta h2 {
+    color: #4c78af;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.cta ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.cta ul li {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+strong {
+    color: #333;
+    font-weight: bold;
+}
+
+.animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

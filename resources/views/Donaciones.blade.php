@@ -5,31 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peluditos | Gracias por apoyar</title>
     <link rel="stylesheet" href="{{ asset('css/Donaciones.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/btn_Accesibilidad.css') }}">
     <style>
-        /* Estilo para mantener el footer abajo */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        main {
-            flex: 1; /* Toma todo el espacio disponible */
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            width: 100%;
-        }
-
-        .carrusel {
+         .carrusel {
             font-size: 1.2em;
             text-align: center;
             padding: 20px;
@@ -134,6 +112,24 @@
         </div>
     </main>
 
+    <button id="botonAccesibilidad" class="boton-accesibilidad" aria-label="Opciones de accesibilidad">
+            <img src="/Imagenes/accessibilidad.png" alt="Icono de accesibilidad" width="30" height="30">
+        </button>
+        <div id="panelAccesibilidad" class="panel-accesibilidad">
+            <h2>Opciones de Accesibilidad</h2>
+            <label for="tamanoFuente">Tamaño de letra:</label>
+            <label>
+            <label>
+            <label>
+            <input type="range" id="tamanoFuente" min="1" max="4" step="1" value="2">
+                <div class="etiquetas-tamano-fuente">
+                    <span>Pequeña</span>
+                    <span>Media</span>
+                    <span>Grande</span>
+                    <span>Mega</span>
+                </div>
+            </div>
+        </div>   
     <footer>
         <p>&copy; 2024 Refugio de Mascotas. Todos los derechos reservados.</p>
         <div class="header-Derecha">
@@ -190,5 +186,7 @@
         setInterval(mostrarSiguienteHistoria, 5000);
         mostrarSiguienteHistoria();
     </script>
+
+  <script src="{{ asset('js/btn_Accesibilidad.js') }}"></script>
 </body>
 </html>
