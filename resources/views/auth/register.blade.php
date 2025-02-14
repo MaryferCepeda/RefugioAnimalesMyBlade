@@ -48,25 +48,8 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .logo-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('/placeholder.svg?height=800&width=600');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.3);
-            z-index: -1;
-        }
-        .logo-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
         }
         .logo {
             max-width: 250px;
@@ -74,25 +57,20 @@
         }
         .tagline {
             font-size: 1.5rem;
-            color: #ffffff;
+            color: var(--primary-color);
             text-align: center;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .paw-print {
             font-size: 3rem;
             color: var(--secondary-color);
             margin: 0 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .register-section {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-            padding: 2rem;
         }
         .register-container {
             background-color: rgba(255, 255, 255, 0.95);
@@ -168,7 +146,7 @@
             z-index: 2;
             transition: background-color 0.3s, color 0.3s;
             font-weight: 500;
-            padding: 10px 20px 
+            padding: 10px 20px;
         }
         .back-button img {
             height: 35px;
@@ -201,14 +179,11 @@
                 flex-direction: column;
             }
             .logo-section {
-                padding: 2rem 1rem;
-            }
-            .register-section {
-                clip-path: none;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
                 padding: 2rem 1rem;
             }
             .register-container {
-                padding: 2rem;
+                border-radius: 20px 20px 0 0;
             }
             .animal-decoration {
                 font-size: 10rem;
@@ -224,14 +199,11 @@
         <a href="{{ url('/') }}" class="back-button"><img src="/Imagenes/Flecha de regreso.webp" alt="Regresar a pagina principal"></a>
         <div class="container">
             <div class="logo-section">
-                <div class="logo-background"></div>
-                <div class="logo-content">
-                    <img src="/Imagenes/logo.png" alt="Peluditos Logo" class="logo">
-                    <div class="tagline">
-                        <span class="paw-print">🐾</span>
-                        Donde cada peludo encuentra un hogar
-                        <span class="paw-print">🐾</span>
-                    </div>
+                <img src="/Imagenes/logo.png" alt="Peluditos Logo" class="logo">
+                <div class="tagline">
+                    <span class="paw-print">🐾</span>
+                    Donde cada peludo encuentra un hogar
+                    <span class="paw-print">🐾</span>
                 </div>
             </div>
             <div class="register-section">
@@ -242,30 +214,27 @@
                         <div class="form-group">
                             <label for="name">Nombre</label>
                             <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
-                            @if ($errors->has('name'))
-                                <span class="error">{{ $errors->first('name') }}</span>
-                            @endif
+                            @error('name')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="email">Correo Electrónico</label>
                             <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username">
-                            @if ($errors->has('email'))
-                                <span class="error">{{ $errors->first('email') }}</span>
-                            @endif
+                            @error('email')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña</label>
                             <input id="password" type="password" name="password" required autocomplete="new-password">
-                            @if ($errors->has('password'))
-                                <span class="error">{{ $errors->first('password') }}</span>
-                            @endif
+                            @error('password')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation">Confirmar Contraseña</label>
                             <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password">
-                            @if ($errors->has('password_confirmation'))
-                                <span class="error">{{ $errors->first('password_confirmation') }}</span>
-                            @endif
                         </div>
                         <button type="submit" class="btn-primary">Registrarse</button>
                     </form>
@@ -279,4 +248,3 @@
     </div>
 </body>
 </html>
-
