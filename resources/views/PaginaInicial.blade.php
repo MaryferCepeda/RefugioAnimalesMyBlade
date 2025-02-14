@@ -14,7 +14,7 @@
             <header>
                 <div class="header-Izquierda">
                     <a href="/">
-                        <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página" />
+                        <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página"/>
                     </a>
                     <h1>Peluditos</h1>
                 </div>
