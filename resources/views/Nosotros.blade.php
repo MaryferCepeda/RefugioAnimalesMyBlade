@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/Nosotros.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive/Pagina_Inicial_resposive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/btn_Accesibilidad.css') }}">
     <title>Peluditos | Acerca de Nosotros</title>
 </head>
-
 <body>
     <div>
     <header>
@@ -17,6 +18,11 @@
                         <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página" />
                     </a>
                     <h1>Peluditos</h1>
+                    <div class="menu-hamburguesa">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
 
                 <nav>
@@ -34,12 +40,10 @@
                     <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
 
                     @guest
-                    <!-- Mostrar si el usuario NO está autenticado -->
                     <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
                     @endguest
 
                     @auth
-                    <!-- Mostrar si el usuario ESTÁ autenticado -->
                     <div class="dropdown">
                         <img src="https://m.media-amazon.com/images/G/01/CST/Prism/Avatars/img_profile_avatar_animals_panda_circ.png" alt="Avatar" class="avatar" />
                         <div class="dropdown-content">
@@ -57,7 +61,7 @@
         <article class="Refugio-Historia animate">
             <img class="Imagen-Historia_Refugio" src="{{ asset('Imagenes/Historia-Refugio.jpeg') }}" alt="Historia del Refugio">
             <div class="Refugio-Contenido">
-                <h4>Historia de Nuestro Refugio</h4>
+                <h2>Historia de Nuestro Refugio</h2>
                 <p class="Historia_Refugio_P">
                     Peluditos Refugio de Mascotas nació del sueño de Laura Gutiérrez, quien, desde pequeña, sintió un amor profundo por los animales. Con el tiempo, Laura comenzó a rescatar animales abandonados, pero pronto se dio cuenta de la necesidad de un lugar seguro para ellos. Decidió entonces crear un refugio, un espacio donde los animales pudieran encontrar protección y una nueva oportunidad.<br><br>
                     Con esfuerzo y dedicación, Laura y un pequeño grupo de voluntarios transformaron una propiedad en un refugio lleno de vida. Además de ofrecer atención y cuidados, implementaron programas de adopción responsable y actividades para sensibilizar a la comunidad sobre el bienestar animal.<br><br>
@@ -110,6 +114,26 @@
             </ul>
         </div>
 
+         <button id="botonAccesibilidad" class="boton-accesibilidad" aria-label="Opciones de accesibilidad">
+            <img src="/Imagenes/accessibilidad.png" alt="Icono de accesibilidad" width="30" height="30">
+        </button>
+
+        <div id="panelAccesibilidad" class="panel-accesibilidad">
+            <h2>Opciones de Accesibilidad</h2>
+            <label for="tamanoFuente">Tamaño de letra:</label>
+            <label>
+            <label>
+            <label>
+            <input type="range" id="tamanoFuente" min="1" max="4" step="1" value="2">
+                <div class="etiquetas-tamano-fuente">
+                    <span>Pequeña</span>
+                    <span>Media</span>
+                    <span>Grande</span>
+                    <span>Mega</span>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2024 Peluditos Refugio de Mascotas. Todos los derechos reservados.</p>
             <div class="header-Derecha">
@@ -125,8 +149,6 @@
             </div>
         </footer>
     </div>
-
-    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const observer = new IntersectionObserver((entries) => {
@@ -140,7 +162,6 @@
         });
     </script>
     <style>
-        /* Estilo del avatar y menú desplegable */
         .avatar {
             width: 40px;
             height: 40px;
@@ -174,4 +195,5 @@
     </style>
 </body>
 
+<script src="{{ asset('js/btn_Accesibilidad.js') }}"></script>  
 </html>

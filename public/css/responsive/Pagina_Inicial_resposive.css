@@ -1,0 +1,100 @@
+@media screen and (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .header-Izquierda {
+      width: 100%;
+      justify-content: space-between;
+      padding: 10px;
+    }
+  
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .header-Izquierda h1 {
+      font-size: 20px;
+    }
+  
+    nav {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-right: 0;
+    }
+  
+    nav.activo {
+      display: flex;
+    }
+  
+    nav a,
+    .abajo {
+      width: 100%;
+      padding: 10px;
+      text-align: left;
+    }
+  
+    .abajo-contenido {
+      position: static;
+      display: none;
+      width: 100%;
+      box-shadow: none;
+    }
+  
+    .abajo.activo .abajo-contenido {
+      display: block;
+    }
+  
+    .menu-hamburguesa {
+      display: block;
+      cursor: pointer;
+      padding: 10px;
+    }
+  
+    .menu-hamburguesa div {
+      width: 25px;
+      height: 3px;
+      background-color: #ff9800;
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+  
+    .menu-hamburguesa.activo div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+  
+    .menu-hamburguesa.activo div:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .menu-hamburguesa.activo div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  
+    .historia {
+      flex-direction: column;
+    }
+  
+    .imagen-container,
+    .descripcion-container {
+      flex: 1 1 100%;
+    }
+  
+    .mascota-imagen {
+      max-width: 200px;
+    }
+  
+    .intro,
+    .impact,
+    .problem,
+    .solution,
+    .cta {
+      padding: 15px;
+    }
+  }
+  
+  

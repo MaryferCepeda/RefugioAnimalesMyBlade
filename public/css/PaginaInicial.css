@@ -1,15 +1,15 @@
+
 .fondo-negro {
-    background-color: #F9F2E7;
+    background-color: #f9f2e7;
     color: black;
     padding: 2rem;
 }
 .logo {
     flex: 0 0 auto;
     margin-right: 20px;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: auto;
     padding: 15px 0 10px 20px;
-    border-radius: 50%;
     object-fit: cover;
     filter: brightness(80%);
     transition: 0.5s ease;
@@ -19,6 +19,7 @@
     filter: drop-shadow(0 0 2em #646cffaa);
 }
 body {
+    text-align: justify !important;
     margin: 0;
     padding: 0;
     display: flex;
@@ -48,21 +49,6 @@ header {
     display: flex;
     align-items: center;
 }
-
-.logo {
-    width: 50px;
-    height: auto;
-    margin-right: 15px;
-    border-radius: 50%;
-    object-fit: cover;
-    filter: brightness(80%);
-    transition: 0.5s ease;
-}
-
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-
 .header-Izquierda h1 {
     font-size: 24px;
     font-weight: bold;
@@ -88,7 +74,7 @@ nav a {
 nav a:hover {
     background-color: #777;
     border-radius: 20px;
-    color:#F9F2E7;
+    color: #f9f2e7;
 }
 
 .header-Derecha a {
@@ -105,7 +91,7 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-.abajo{
+.abajo {
     position: relative;
     display: inline-block;
     top: 0;
@@ -125,7 +111,6 @@ nav a:hover {
     z-index: 1;
 }
 
-
 .abajo-contenido a {
     color: #ff9800;
     text-decoration: none;
@@ -140,14 +125,11 @@ nav a:hover {
 .abajo:hover .abajo-contenido {
     display: block;
 }
-
-
-
 main {
     margin-top: 60px;
-    background-color: #F9F2E7;
+    background-color: #f9f2e7;
     color: black;
-    flex: 1; /* Permite que main ocupe el espacio disponible */
+    flex: 1;
 
     display: flex;
     justify-content: center;
@@ -156,53 +138,50 @@ main {
     padding: 2rem;
 }
 footer {
-    background: linear-gradient(45deg, #000000, #2f2f2f); /* Degradado de colores negros */
+    background: linear-gradient(45deg, #000000, #2f2f2f);
     color: white;
     text-align: center;
     padding: 2rem;
     position: relative;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
     z-index: 10;
+    text-align: center !important;
 }
 
 footer p {
     margin: 0;
-    font-family: 'Arial', sans-serif; /* Fuente de texto */
+    font-family: "Arial", sans-serif;
     font-weight: bold;
 }
 
 footer::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
     height: 5px;
-    background: #fff; /* Línea decorativa */
+    background: #fff;
     border-radius: 5px;
 }
 
 footer p span {
-    color: #ff9800; /* Color dorado para resaltar */
+    color: #ff9800;
 }
-
-/* Sección Historia */
 .historia {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
-    background: #F9F2E7;
+    background-color: #f9f2e7;
     border-radius: 8px;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 1200px;
     margin: 2rem auto;
 }
-
-/* Imagen */
 .imagen-container {
     flex: 1 1 300px;
     display: flex;
@@ -216,10 +195,8 @@ footer p span {
     border-radius: 50%;
     border: 4px solid #ff9800;
 }
-
-/* Contenedor de descripción */
 .descripcion-container {
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     flex: 2 1 400px;
     text-align: left;
 }
@@ -236,8 +213,6 @@ footer p span {
     font-size: 1rem;
     color: black;
 }
-
-/* Botón */
 .btn-conocer {
     margin-top: 1rem;
     padding: 0.8rem 1.5rem;
@@ -260,8 +235,8 @@ footer p span {
     background: #f44336;
 }
 
-.Body2{
-    font-family: 'Arial', sans-serif;
+.Body2 {
+    font-family: "Arial", sans-serif;
     line-height: 1.6;
     background-color: #f9f9f9;
     color: #333;
@@ -269,7 +244,11 @@ footer p span {
     padding: 0;
 }
 
-.intro, .impact, .problem, .solution, .cta{
+.intro,
+.impact,
+.problem,
+.solution,
+.cta {
     margin: 20px auto;
     padding: 20px;
     max-width: 800px;
@@ -277,8 +256,6 @@ footer p span {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
 }
-
-/* Sección de introducción */
 .intro {
     text-align: center;
 }
@@ -304,8 +281,6 @@ footer p span {
     content: "❤";
     margin-right: 10px;
 }
-
-/* Sección de impacto */
 .impact h2 {
     color: #ff9800;
     font-size: 1.5em;
@@ -317,8 +292,6 @@ footer p span {
     text-align: center;
     color: #444;
 }
-
-/* Sección del problema */
 .problem h2 {
     color: #f44336;
     font-size: 1.5em;
@@ -334,8 +307,6 @@ footer p span {
     font-size: 1.1em;
     margin: 5px 0;
 }
-
-/* Sección de solución */
 .solution h2 {
     color: #4caf50;
     font-size: 1.5em;

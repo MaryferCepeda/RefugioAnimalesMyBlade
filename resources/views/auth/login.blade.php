@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4f46e5;
+            --primary-color: rgb(255, 152, 0);
             --secondary-color: #fbbf24;
             --text-color: #374151;
             --background-color: #f3f4f6;
@@ -20,7 +20,7 @@
             color: var(--text-color);
         }
         .background {
-            background-image: url('/placeholder.svg?height=1080&width=1920');
+            background-color:#f9f2e7;
             background-size: cover;
             background-position: center;
             height: 100%;
@@ -127,7 +127,7 @@
             font-weight: 600;
         }
         .btn-primary:hover {
-            background-color: #4338ca;
+            background-color:  #fbbf24;
             transform: translateY(-1px);
         }
         .btn-primary:active {
@@ -164,7 +164,7 @@
             transition: color 0.3s;
         }
         .register-link a:hover {
-            color: #4338ca;
+            color: #fbbf24;
         }
         .animal-decoration {
             position: absolute;

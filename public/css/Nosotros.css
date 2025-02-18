@@ -1,14 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
-}
-
-/* Estilos originales y ajustados */
 body {
     margin: 0;
     padding: 0;
@@ -17,10 +6,8 @@ body {
     min-height: 100vh;
     color: white;
     background-color: #F9F2E7;
+    text-align: justify;
 }
-
-
-/* Header */
 header {
     position: fixed;
     top: 0;
@@ -29,42 +16,54 @@ header {
     background: #ffffff;
     color: rgb(255, 152, 0);
     display: flex;
+    padding: 10px 20px;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
+    box-sizing: border-box;
 }
-
 .header-Izquierda {
     display: flex;
     align-items: center;
 }
-
-.header-Izquierda .logo {
-    width: 50px;
-    height: auto;
-    margin-right: 15px;
-}
-
 .header-Izquierda h1 {
     font-size: 24px;
     font-weight: bold;
     margin: 0;
 }
+.header-Derecha a {
+    margin-left: 10px;
+}
 
+.header-Derecha img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.header-Derecha img:hover {
+    transform: scale(1.1);
+}
 .logo {
-    width: 50px;
-    height: auto;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #e78b5aaa);
+    flex: 0 0 auto;
+    margin-right: 20px;
+    height: 50px;
+    width: auto;
+    padding: 15px 0 10px 20px;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: 0.5s ease;
 }
 
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
 nav {
     display: flex;
     justify-content: flex-end;
-    margin-right: 0; /* Ajuste para evitar desbordamiento */
+    margin-right: 70px;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -78,9 +77,9 @@ nav a {
 }
 
 nav a:hover {
-    color: white;
     background-color: #777;
     border-radius: 20px;
+    color:#F9F2E7;
 }
 .abajo{
     position: relative;
@@ -117,11 +116,8 @@ nav a:hover {
 .abajo:hover .abajo-contenido {
     display: block;
 }
-
-
-/* Article */
 .Refugio-Historia {
-    margin-top: 80px;
+    margin-top: 180px;
     display: flex;
     gap: 2rem;
     padding: 2rem;
@@ -144,9 +140,8 @@ nav a:hover {
     justify-content: center;
 }
 
-.Refugio-Contenido h4 {
-    font-size: 20px;
-    text-align: center;
+.Refugio-Contenido h2 {
+    text-align: justify;
     color: #ff9800;
     margin-bottom: 1rem;
 }
@@ -155,7 +150,6 @@ nav a:hover {
     color: #555;
 }
 
-/* Vision & Mision */
 main {
     display: flex;
     justify-content: space-around;
@@ -185,8 +179,6 @@ main {
     text-align: center;
     color: #555;
 }
-
-/* Redes Sociales */
 .RedesSociales {
     margin: 3rem auto;
     padding: 2rem;
@@ -204,15 +196,11 @@ main {
    
     margin-bottom: 2rem;
 }
-
-/* Contenedor de las tarjetas */
 .RedesSociales-Container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
-
-/* Estilo de cada tarjeta */
 .RedesSociales-Card {
     background-color: #f8f9fa;
     padding: 1rem;
@@ -230,8 +218,6 @@ main {
     width: 100%;
     border-radius: 8px;
 }
-
-/* Responsividad */
 @media (max-width: 1024px) {
     .RedesSociales-Container {
         grid-template-columns: repeat(2, 1fr);
@@ -243,9 +229,6 @@ main {
         grid-template-columns: 1fr;
     }
 }
-
-
-/* Tecnologías */
 .Tecnologias {
     font-size: 20px;
     color: black;
@@ -367,7 +350,7 @@ footer img {
 }
 
 h2{
-    text-align: center;
+    text-align: j;
     color:black;
     padding-top: 100px;
 }

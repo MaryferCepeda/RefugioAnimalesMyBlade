@@ -5,18 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peluditos</title>
     <link rel="stylesheet" href="{{ asset('css/PaginaInicial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive/Pagina_Inicial_resposive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/btn_Accesibilidad.css') }}">
 </head>
 
 <body>
     <div class="fondo">
         <div>
-            <header>
+        <header>
                 <div class="header-Izquierda">
                     <a href="/">
                         <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página"/>
                     </a>
                     <h1>Peluditos</h1>
+                    <div class="menu-hamburguesa">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
                 <nav>
                     <a href="/" title="Este es el menu principal">Inicio</a>
@@ -195,6 +201,34 @@
                 });
             });
             document.querySelectorAll('.animate').forEach(element => observer.observe(element));        
+        });
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuHamburguesa = document.querySelector('.menu-hamburguesa');
+            const nav = document.querySelector('nav');
+
+            menuHamburguesa.addEventListener('click', function() {
+                menuHamburguesa.classList.toggle('activo');
+                nav.classList.toggle('activo');
+            });
+            document.querySelectorAll('nav a').forEach(enlace => {
+                enlace.addEventListener('click', () => {
+                    menuHamburguesa.classList.remove('activo');
+                    nav.classList.remove('activo');
+                });
+            });
+            const desplegables = document.querySelectorAll('.abajo');
+            desplegables.forEach(desplegable => {
+                desplegable.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('activo');
+                    }
+                });
+            });
         });
     </script>
     <style>  
