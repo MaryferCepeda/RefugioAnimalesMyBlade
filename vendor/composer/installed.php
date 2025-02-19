@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '2b02cc63ea696326e081da3895e2bf678891b3c8',
+        'reference' => '585c4cfe1676ad926273cc4483b0c57854914a08',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -377,9 +377,9 @@
             ),
         ),
         'laravel/breeze' => array(
-            'pretty_version' => 'v2.2.6',
-            'version' => '2.2.6.0',
-            'reference' => '907b12160d1b8b8213e7e2e011987fffb5567edc',
+            'pretty_version' => 'v2.3.4',
+            'version' => '2.3.4.0',
+            'reference' => 'e456fe0db93d1f9f5ce3b2043739a0777404395c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/breeze',
             'aliases' => array(),
@@ -397,7 +397,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '2b02cc63ea696326e081da3895e2bf678891b3c8',
+            'reference' => '585c4cfe1676ad926273cc4483b0c57854914a08',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -982,6 +982,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'srmklive/paypal' => array(
+            'pretty_version' => '3.0.32',
+            'version' => '3.0.32.0',
+            'reference' => '031d69d7c99f9ef0874a34cb85326ede28cd7aed',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../srmklive/paypal',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/clock' => array(
             'pretty_version' => 'v7.2.0',
