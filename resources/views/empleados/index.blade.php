@@ -148,6 +148,19 @@
         <a href="{{ route('empleados.index') }}">Empleados</a>
         <a href="{{ route('ventas.index') }}">Ventas</a>
         <a href="{{ route('donaciones.index') }}">Donaciones</a>
+        @guest
+            <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
+        @endguest
+
+        @auth
+            <!-- Botón de Cerrar Sesión fijo -->
+            <div class="fixed-logout-btn">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-danger">Cerrar Sesión</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        @endauth
     </nav>
     <div class="container">
         <h1>Empleados/Voluntarios</h1>
