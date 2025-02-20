@@ -11,6 +11,7 @@ use Illuminate\Contracts\Validation\Rule as RuleContract;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Illuminate\Contracts\Validation\ValidatorAwareRule;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
@@ -265,6 +266,8 @@ class Validator implements ValidatorContract
         'PresentWithAll',
         'Prohibited',
         'ProhibitedIf',
+        'ProhibitedIfAccepted',
+        'ProhibitedIfDeclined',
         'ProhibitedUnless',
         'Prohibits',
         'MissingIf',
@@ -1024,7 +1027,7 @@ class Validator implements ValidatorContract
      */
     protected function attributesThatHaveMessages()
     {
-        return collect($this->messages()->toArray())->map(function ($message, $key) {
+        return (new Collection($this->messages()->toArray()))->map(function ($message, $key) {
             return explode('.', $key)[0];
         })->unique()->flip()->all();
     }
@@ -1184,7 +1187,7 @@ class Validator implements ValidatorContract
      */
     public function getRulesWithoutPlaceholders()
     {
-        return collect($this->rules)
+        return (new Collection($this->rules))
             ->mapWithKeys(fn ($value, $key) => [
                 str_replace($this->dotPlaceholder, '\\.', $key) => $value,
             ])
@@ -1199,7 +1202,7 @@ class Validator implements ValidatorContract
      */
     public function setRules(array $rules)
     {
-        $rules = collect($rules)->mapWithKeys(function ($value, $key) {
+        $rules = (new Collection($rules))->mapWithKeys(function ($value, $key) {
             return [str_replace('\.', $this->dotPlaceholder, $key) => $value];
         })->toArray();
 
@@ -1224,7 +1227,7 @@ class Validator implements ValidatorContract
         // of the explicit rules needed for the given data. For example the rule
         // names.* would get expanded to names.0, names.1, etc. for this data.
         $response = (new ValidationRuleParser($this->data))
-                            ->explode(ValidationRuleParser::filterConditionalRules($rules, $this->data));
+            ->explode(ValidationRuleParser::filterConditionalRules($rules, $this->data));
 
         $this->rules = array_merge_recursive(
             $this->rules, $response->rules

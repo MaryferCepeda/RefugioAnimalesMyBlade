@@ -5,7 +5,7 @@ namespace Illuminate\Database\Eloquent\Relations;
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\Concerns\AsPivot;
@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithDictionary;
 use Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithPivotTable;
 use Illuminate\Database\Query\Grammars\MySqlGrammar;
 use Illuminate\Database\UniqueConstraintViolationException;
+use Illuminate\Support\Collection as BaseCollection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 
@@ -270,7 +271,7 @@ class BelongsToMany extends Relation
     }
 
     /** @inheritDoc */
-    public function match(array $models, Collection $results, $relation)
+    public function match(array $models, EloquentCollection $results, $relation)
     {
         $dictionary = $this->buildDictionary($results);
 
@@ -296,7 +297,7 @@ class BelongsToMany extends Relation
      * @param  \Illuminate\Database\Eloquent\Collection<int, TRelatedModel>  $results
      * @return array<array<string, TRelatedModel>>
      */
-    protected function buildDictionary(Collection $results)
+    protected function buildDictionary(EloquentCollection $results)
     {
         // First we'll build a dictionary of child models keyed by the foreign key
         // of the relation so that we will easily and quickly match them to the
@@ -696,6 +697,23 @@ class BelongsToMany extends Relation
     }
 
     /**
+     * Find a sole related model by its primary key.
+     *
+     * @param  mixed  $id
+     * @param  array  $columns
+     * @return TRelatedModel
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<TRelatedModel>
+     * @throws \Illuminate\Database\MultipleRecordsFoundException
+     */
+    public function findSole($id, $columns = ['*'])
+    {
+        return $this->where(
+            $this->getRelated()->getQualifiedKeyName(), '=', $this->parseId($id)
+        )->sole($columns);
+    }
+
+    /**
      * Find multiple related models by their primary keys.
      *
      * @param  \Illuminate\Contracts\Support\Arrayable|array  $ids
@@ -891,7 +909,7 @@ class BelongsToMany extends Relation
     protected function shouldSelect(array $columns = ['*'])
     {
         if ($columns == ['*']) {
-            $columns = [$this->related->getTable().'.*'];
+            $columns = [$this->related->qualifyColumn('*')];
         }
 
         return array_merge($columns, $this->aliasedPivotColumns());
@@ -908,7 +926,7 @@ class BelongsToMany extends Relation
     {
         $defaults = [$this->foreignPivotKey, $this->relatedPivotKey];
 
-        return collect(array_merge($defaults, $this->pivotColumns))->map(function ($column) {
+        return (new BaseCollection(array_merge($defaults, $this->pivotColumns)))->map(function ($column) {
             return $this->qualifyPivotColumn($column).' as pivot_'.$column;
         })->unique()->all();
     }
@@ -1350,6 +1368,8 @@ class BelongsToMany extends Relation
      */
     public function create(array $attributes = [], array $joining = [], $touch = true)
     {
+        $attributes = array_merge($this->getQuery()->pendingAttributes, $attributes);
+
         $instance = $this->related->newInstance($attributes);
 
         // Once we save the related model, we need to attach it to the base model via

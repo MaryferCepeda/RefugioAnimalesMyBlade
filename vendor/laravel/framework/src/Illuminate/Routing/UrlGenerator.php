@@ -9,6 +9,7 @@ use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\InteractsWithTime;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
@@ -453,7 +454,7 @@ class UrlGenerator implements UrlGeneratorContract
 
         $url = $absolute ? $request->url() : '/'.$request->path();
 
-        $queryString = collect(explode('&', (string) $request->server->get('QUERY_STRING')))
+        $queryString = (new Collection(explode('&', (string) $request->server->get('QUERY_STRING'))))
             ->reject(fn ($parameter) => in_array(Str::before($parameter, '='), $ignoreQuery))
             ->join('&');
 
@@ -528,7 +529,7 @@ class UrlGenerator implements UrlGeneratorContract
      */
     public function toRoute($route, $parameters, $absolute)
     {
-        $parameters = collect(Arr::wrap($parameters))->map(function ($value, $key) use ($route) {
+        $parameters = Collection::wrap($parameters)->map(function ($value, $key) use ($route) {
             return $value instanceof UrlRoutable && $route->bindingFieldFor($key)
                     ? $value->{$route->bindingFieldFor($key)}
                     : $value;
@@ -742,16 +743,40 @@ class UrlGenerator implements UrlGeneratorContract
     }
 
     /**
+     * Set the URL origin for all generated URLs.
+     *
+     * @param  string|null  $root
+     * @return void
+     */
+    public function useOrigin(?string $root)
+    {
+        $this->forceRootUrl($root);
+    }
+
+    /**
      * Set the forced root URL.
      *
      * @param  string|null  $root
      * @return void
+     *
+     * @deprecated Use useOrigin
      */
     public function forceRootUrl($root)
     {
         $this->forcedRoot = $root ? rtrim($root, '/') : null;
 
         $this->cachedRoot = null;
+    }
+
+    /**
+     * Set the URL origin for all generated asset URLs.
+     *
+     * @param  string|null  $root
+     * @return void
+     */
+    public function useAssetOrigin(?string $root)
+    {
+        $this->assetRoot = $root ? rtrim($root, '/') : null;
     }
 
     /**

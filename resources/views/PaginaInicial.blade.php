@@ -18,11 +18,7 @@
                         <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página"/>
                     </a>
                     <h1>Peluditos</h1>
-                    <div class="menu-hamburguesa">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    
                 </div>
                 <nav>
                     <a href="/" title="Este es el menu principal">Inicio</a>
@@ -116,8 +112,9 @@
                         <li>Vagan solos por las calles de México, abandonados y en peligro.</li>
                         <li>Sufren de maltrato incluso en sus propios hogares.</li>
                     </ul>
-                    <h3>¿Por qué ocurre esto?</h3>
+                    
                     <p class="Parrafos">
+                        <strong>¿Por qué ocurre esto?</strong><br><br>
                         La falta de responsabilidad y educación de algunos dueños ha generado una crisis nacional que
                         afecta el bienestar animal, la salud pública y la sociedad en general.
                     </p>
@@ -267,3 +264,4 @@
    <script src="{{ asset('js/btn_Accesibilidad.js') }}"></script>
 </body>
 </html>
+        

@@ -1,7 +1,7 @@
 .logo {
     flex: 0 0 auto;
     margin-right: 20px;
-    height: 50px;
+    height: 80px;
     width: auto;
     padding: 15px 0 10px 20px;
     object-fit: cover;
@@ -43,10 +43,11 @@ header {
     align-items: center;
 }
 .header-Izquierda h1 {
-    font-size: 24px;
+    font-size: 35px;
     font-weight: bold;
     margin: 0;
 }
+
 
 nav {
     display: flex;
@@ -54,7 +55,6 @@ nav {
     margin-right: 70px;
     flex-wrap: wrap;
     align-items: center;
-    margin-right: 50px;
 }
 
 nav a {
@@ -62,11 +62,14 @@ nav a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0.25rem;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
+
 }
 
 nav a:hover {
-    background-color: #777;
+    background-color: #ff9800;
+
     border-radius: 20px;
     color: #f9f2e7;
 }
@@ -84,6 +87,7 @@ nav a:hover {
 .header-Derecha img:hover {
     transform: scale(1.1);
 }
+
 .abajo {
     position: relative;
     display: inline-block;
@@ -112,24 +116,25 @@ nav a:hover {
 
 .abajo-contenido a:hover {
     color: white;
-    background-color: #777;
+    background-color: #ff9800;
+
 }
 
 .abajo:hover .abajo-contenido {
     display: block;
 }
-
 .dropbtn {
     background: none;
     border: none;
     color: rgb(255, 152, 0);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 25px;
 }
 
 .dropbtn:hover {
     color: #f1f1f1;
-    background-color: #777;
+    background-color: #ff9800;
+
 }
 
 .caja {
@@ -153,9 +158,7 @@ nav a:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.texto-izquierda {
-    max-width: 60%;
-}
+
 
 .titulo-fundacion {
     font-size: 1.5rem;
@@ -337,4 +340,56 @@ background-color: #ff9800;
     color: #FF8C00;
     text-align: center;
     font-size: 30px;
+}
+
+.RedesSociales {
+    margin: 3rem auto;
+    margin-top: 150px;
+    padding: 2rem;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.RedesSociales h5 {
+    font-size: 20px;
+    color: #ff9800;
+    font-weight: 600;
+   
+    margin-bottom: 2rem;
+}
+.RedesSociales-Container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.RedesSociales-Card {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.RedesSociales-Card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.RedesSociales-Card iframe {
+    width: 100%;
+    border-radius: 8px;
+}
+@media (max-width: 1024px) {
+    .RedesSociales-Container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .RedesSociales-Container {
+        grid-template-columns: 1fr;
+    }
 }

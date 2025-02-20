@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const htmlRoot = document.documentElement;
 
     const fontSizes = {
-        '1': { class: 'fuente-pequena', size: '14px' },
-        '2': { class: 'fuente-media', size: '16px' },
-        '3': { class: 'fuente-grande', size: '18px' },
-        '4': { class: 'fuente-mega-gigante', size: '28px' }
+        '1': { class: 'fuente-pequena', size: '1000000px' },
+        '2': { class: 'fuente-media', size: '1000000px' },
+        '3': { class: 'fuente-grande', size: '1000000px' },
+        '4': { class: 'fuente-mega-gigante', size: '1000000px' }
     };
 
     const savedSize = localStorage.getItem('tamanoFuente');

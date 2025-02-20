@@ -7,7 +7,7 @@
 .logo {
     flex: 0 0 auto;
     margin-right: 20px;
-    height: 50px;
+    height: 80px;
     width: auto;
     padding: 15px 0 10px 20px;
     object-fit: cover;
@@ -50,7 +50,7 @@ header {
     align-items: center;
 }
 .header-Izquierda h1 {
-    font-size: 24px;
+    font-size: 35px;
     font-weight: bold;
     margin: 0;
 }
@@ -68,11 +68,14 @@ nav a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0.25rem;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
+
 }
 
 nav a:hover {
-    background-color: #777;
+    background-color: #ff9800;
+
     border-radius: 20px;
     color: #f9f2e7;
 }
@@ -119,7 +122,8 @@ nav a:hover {
 
 .abajo-contenido a:hover {
     color: white;
-    background-color: #777;
+    background-color: #ff9800;
+
 }
 
 .abajo:hover .abajo-contenido {
@@ -144,7 +148,7 @@ footer {
     padding: 2rem;
     position: relative;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-    font-size: 1.2rem;
+    font-size: 20px;
     z-index: 10;
     text-align: center !important;
 }
@@ -198,28 +202,27 @@ footer p span {
 .descripcion-container {
     font-family: "Arial", sans-serif;
     flex: 2 1 400px;
-    text-align: left;
+    text-align: justify;
 }
 
 .descripcion-container h2 {
     color: #ff9800;
     margin-bottom: 1rem;
-    font-size: 1.8rem;
+    font-size: 29px;
 }
 
 .descripcion-container p {
     margin-bottom: 1rem;
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 20px;
     color: black;
 }
 .btn-conocer {
     margin-top: 1rem;
     padding: 0.8rem 1.5rem;
     background: #ff9800;
-    color: #121212;
-    font-weight: bold;
-    font-size: 1rem;
+    
+    font-size: 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -228,7 +231,7 @@ footer p span {
 
 .btn-conocer a {
     text-decoration: none;
-    color: #121212;
+    color: #ffffff;
 }
 
 .btn-conocer:hover {
@@ -261,7 +264,7 @@ footer p span {
 }
 
 .intro p {
-    font-size: 1.2em;
+    font-size: 20px;
     color: #555;
 }
 
@@ -271,7 +274,7 @@ footer p span {
 }
 
 .intro ul li {
-    font-size: 1.1em;
+    font-size: 20px;
     margin: 5px 0;
     display: flex;
     align-items: center;
@@ -283,18 +286,18 @@ footer p span {
 }
 .impact h2 {
     color: #ff9800;
-    font-size: 1.5em;
+    font-size: 20px;
     text-align: center;
 }
 
 .impact p {
-    font-size: 1.2em;
+    font-size: 20px;
     text-align: center;
     color: #444;
 }
 .problem h2 {
     color: #f44336;
-    font-size: 1.5em;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -304,12 +307,12 @@ footer p span {
 }
 
 .problem ul li {
-    font-size: 1.1em;
+    font-size: 20px;
     margin: 5px 0;
 }
 .solution h2 {
     color: #4caf50;
-    font-size: 1.5em;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -319,12 +322,12 @@ footer p span {
 }
 
 .solution ul li {
-    font-size: 1.1em;
+    font-size: 20px;
     margin: 5px 0;
 }
 .cta h2 {
     color: #4c78af;
-    font-size: 1.5em;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -334,7 +337,7 @@ footer p span {
 }
 
 .cta ul li {
-    font-size: 1.1em;
+    font-size: 20px;
     margin: 5px 0;
 }
 strong {
@@ -351,4 +354,11 @@ strong {
 .animate.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.Parrafos{
+    font-size: 20px;
+}
+.h3{
+    font-size: 20px;
 }

@@ -15,7 +15,7 @@ class AdminAuthController extends Controller
 
         if (Auth::guard('administrador')->attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard');
+            return redirect()->route('/iniciar');
         }
 
         return back()->withErrors([

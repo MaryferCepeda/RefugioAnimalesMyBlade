@@ -69,7 +69,7 @@
             <section class="donation-container">
                 <h2>Donar Dinero</h2>
                 <form id="donation-form">
-                    <label for="donation-amount">Monto de la donación</label>
+                    <label for="donation-amount" ><span class="Monto">Monto de la donación<span></label>
                     <input
                         type="number"
                         id="donation-amount"

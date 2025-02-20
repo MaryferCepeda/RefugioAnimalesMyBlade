@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Log\Context\Events\ContextDehydrating as Dehydrating;
 use Illuminate\Log\Context\Events\ContextHydrated as Hydrated;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\Traits\Macroable;
 use RuntimeException;
@@ -21,7 +22,7 @@ class Repository
     /**
      * The event dispatcher instance.
      *
-     * @var \Illuminate\Events\Dispatcher
+     * @var \Illuminate\Contracts\Events\Dispatcher
      */
     protected $events;
 
@@ -66,6 +67,17 @@ class Repository
     }
 
     /**
+     * Determine if the given key is missing.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function missing($key)
+    {
+        return ! $this->has($key);
+    }
+
+    /**
      * Determine if the given key exists within the hidden context data.
      *
      * @param  string  $key
@@ -74,6 +86,17 @@ class Repository
     public function hasHidden($key)
     {
         return array_key_exists($key, $this->hidden);
+    }
+
+    /**
+     * Determine if the given key is missing within the hidden context data.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function missingHidden($key)
+    {
+        return ! $this->hasHidden($key);
     }
 
     /**
@@ -367,7 +390,7 @@ class Repository
         }
 
         if ($value instanceof Closure) {
-            return collect($this->data[$key])->contains($value);
+            return (new Collection($this->data[$key]))->contains($value);
         }
 
         return in_array($value, $this->data[$key], $strict);
@@ -394,7 +417,7 @@ class Repository
         }
 
         if ($value instanceof Closure) {
-            return collect($this->hidden[$key])->contains($value);
+            return (new Collection($this->hidden[$key]))->contains($value);
         }
 
         return in_array($value, $this->hidden[$key], $strict);
@@ -546,8 +569,8 @@ class Repository
         };
 
         [$data, $hidden] = [
-            collect($context['data'] ?? [])->map(fn ($value, $key) => $unserialize($value, $key, false))->all(),
-            collect($context['hidden'] ?? [])->map(fn ($value, $key) => $unserialize($value, $key, true))->all(),
+            (new Collection($context['data'] ?? []))->map(fn ($value, $key) => $unserialize($value, $key, false))->all(),
+            (new Collection($context['hidden'] ?? []))->map(fn ($value, $key) => $unserialize($value, $key, true))->all(),
         ];
 
         $this->events->dispatch(new Hydrated(

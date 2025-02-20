@@ -86,25 +86,6 @@
             </div>
         </main>
 
-        <div class="Body2">
-
-            <aside class="RedesSociales animate">
-                <h5>COLABORACIONES EN REDES SOCIALES</h5>
-                <div class="RedesSociales-Container">
-                    <div class="RedesSociales-Card">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FMaberCaninos911%2Fposts%2Fpfbid0nfpLvoxefBPw29QUjbic9G5qz5KTbHHt9cGwCBp7iqrqvgjVs2eny9fAngnfCzHFl&show_text=true&width=500" width="500" height="706" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="RedesSociales-Card">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FMundoPatitasOficial%2Fposts%2Fpfbid0d87zg3pBz8vwsXFaSMtXegKAh27DaZQNiUsrUAS2EQwERMbnth73Fgh9Y51jpfial&show_text=true&width=500" width="500" height="673" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="RedesSociales-Card">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02ibp7Dd5X2Gfj67y5QPtUz6UaTThw76cHdfNntafxDYHwVSx7QBD8R1QDh22FK5RDl%26id%3D100064629196284&show_text=true&width=500" width="500" height="748" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                </div>
-            </aside>
-
-        </div>
-
         <hr>
         <div class="Tecnologias animate">
             <h5>Tecnologías Usadas</h5>

@@ -379,6 +379,10 @@ class Str
             $needles = (array) $needles;
         }
 
+        if (is_null($haystack)) {
+            return false;
+        }
+
         foreach ($needles as $needle) {
             if ((string) $needle !== '' && str_ends_with($haystack, $needle)) {
                 return true;
@@ -409,14 +413,14 @@ class Str
 
         $start = ltrim($matches[1]);
 
-        $start = str(mb_substr($start, max(mb_strlen($start, 'UTF-8') - $radius, 0), $radius, 'UTF-8'))->ltrim()->unless(
+        $start = Str::of(mb_substr($start, max(mb_strlen($start, 'UTF-8') - $radius, 0), $radius, 'UTF-8'))->ltrim()->unless(
             fn ($startWithRadius) => $startWithRadius->exactly($start),
             fn ($startWithRadius) => $startWithRadius->prepend($omission),
         );
 
         $end = rtrim($matches[3]);
 
-        $end = str(mb_substr($end, 0, $radius, 'UTF-8'))->rtrim()->unless(
+        $end = Str::of(mb_substr($end, 0, $radius, 'UTF-8'))->rtrim()->unless(
             fn ($endWithRadius) => $endWithRadius->exactly($end),
             fn ($endWithRadius) => $endWithRadius->append($omission),
         );
@@ -477,9 +481,10 @@ class Str
      *
      * @param  string|iterable<string>  $pattern
      * @param  string  $value
+     * @param  bool  $ignoreCase
      * @return bool
      */
-    public static function is($pattern, $value)
+    public static function is($pattern, $value, $ignoreCase = false)
     {
         $value = (string) $value;
 
@@ -497,6 +502,10 @@ class Str
                 return true;
             }
 
+            if ($ignoreCase && mb_strtolower($pattern) === mb_strtolower($value)) {
+                return true;
+            }
+
             $pattern = preg_quote($pattern, '#');
 
             // Asterisks are translated into zero-or-more regular expression wildcards
@@ -504,7 +513,7 @@ class Str
             // pattern such as "library/*", making any string check convenient.
             $pattern = str_replace('\*', '.*', $pattern);
 
-            if (preg_match('#^'.$pattern.'\z#u', $value) === 1) {
+            if (preg_match('#^'.$pattern.'\z#'.($ignoreCase ? 'iu' : 'u'), $value) === 1) {
                 return true;
             }
         }
@@ -841,10 +850,10 @@ class Str
         preg_match_all($pattern, $subject, $matches);
 
         if (empty($matches[0])) {
-            return collect();
+            return new Collection;
         }
 
-        return collect($matches[1] ?? $matches[0]);
+        return new Collection($matches[1] ?? $matches[0]);
     }
 
     /**
@@ -968,6 +977,18 @@ class Str
         $lastWord = array_pop($parts);
 
         return implode('', $parts).self::plural($lastWord, $count);
+    }
+
+    /**
+     * Pluralize the last word of an English, Pascal caps case string.
+     *
+     * @param  string  $value
+     * @param  int|array|\Countable  $count
+     * @return string
+     */
+    public static function pluralPascal($value, $count = 2)
+    {
+        return static::pluralStudly($value, $count);
     }
 
     /**
@@ -1128,7 +1149,7 @@ class Str
     public static function replaceArray($search, $replace, $subject)
     {
         if ($replace instanceof Traversable) {
-            $replace = collect($replace)->all();
+            $replace = (new Collection($replace))->all();
         }
 
         $segments = explode($search, $subject);
@@ -1170,15 +1191,15 @@ class Str
     public static function replace($search, $replace, $subject, $caseSensitive = true)
     {
         if ($search instanceof Traversable) {
-            $search = collect($search)->all();
+            $search = (new Collection($search))->all();
         }
 
         if ($replace instanceof Traversable) {
-            $replace = collect($replace)->all();
+            $replace = (new Collection($replace))->all();
         }
 
         if ($subject instanceof Traversable) {
-            $subject = collect($subject)->all();
+            $subject = (new Collection($subject))->all();
         }
 
         return $caseSensitive
@@ -1311,7 +1332,7 @@ class Str
     public static function remove($search, $subject, $caseSensitive = true)
     {
         if ($search instanceof Traversable) {
-            $search = collect($search)->all();
+            $search = (new Collection($search))->all();
         }
 
         return $caseSensitive
@@ -1583,6 +1604,10 @@ class Str
             $needles = [$needles];
         }
 
+        if (is_null($haystack)) {
+            return false;
+        }
+
         foreach ($needles as $needle) {
             if ((string) $needle !== '' && str_starts_with($haystack, $needle)) {
                 return true;
@@ -1611,6 +1636,17 @@ class Str
         $studlyWords = array_map(fn ($word) => static::ucfirst($word), $words);
 
         return static::$studlyCache[$key] = implode($studlyWords);
+    }
+
+    /**
+     * Convert a value to Pascal case.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public static function pascal($value)
+    {
+        return static::studly($value);
     }
 
     /**

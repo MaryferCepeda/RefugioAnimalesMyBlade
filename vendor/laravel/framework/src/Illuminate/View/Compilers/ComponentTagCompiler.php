@@ -421,8 +421,8 @@ class ComponentTagCompiler
     public function guessClassName(string $component)
     {
         $namespace = Container::getInstance()
-                    ->make(Application::class)
-                    ->getNamespace();
+            ->make(Application::class)
+            ->getNamespace();
 
         $class = $this->formatClassName($component);
 
@@ -488,9 +488,9 @@ class ComponentTagCompiler
                     ? (new Collection($constructor->getParameters()))->map->getName()->all()
                     : [];
 
-        return (new Collection($attributes))->partition(function ($value, $key) use ($parameterNames) {
-            return in_array(Str::camel($key), $parameterNames);
-        })->all();
+        return (new Collection($attributes))
+            ->partition(fn ($value, $key) => in_array(Str::camel($key), $parameterNames))
+            ->all();
     }
 
     /**
@@ -787,12 +787,12 @@ class ComponentTagCompiler
     protected function attributesToString(array $attributes, $escapeBound = true)
     {
         return (new Collection($attributes))
-                ->map(function (string $value, string $attribute) use ($escapeBound) {
-                    return $escapeBound && isset($this->boundAttributes[$attribute]) && $value !== 'true' && ! is_numeric($value)
-                                ? "'{$attribute}' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute({$value})"
-                                : "'{$attribute}' => {$value}";
-                })
-                ->implode(',');
+            ->map(function (string $value, string $attribute) use ($escapeBound) {
+                return $escapeBound && isset($this->boundAttributes[$attribute]) && $value !== 'true' && ! is_numeric($value)
+                            ? "'{$attribute}' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute({$value})"
+                            : "'{$attribute}' => {$value}";
+            })
+            ->implode(',');
     }
 
     /**

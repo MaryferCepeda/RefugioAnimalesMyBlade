@@ -29,19 +29,19 @@ header {
     align-items: center;
 }
 .header-Izquierda h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
 }
 .logo {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    height: 50px;
-    width: auto;
-    padding: 15px 0 10px 20px;
-    object-fit: cover;
-    filter: brightness(80%);
-    transition: 0.5s ease;
+  flex: 0 0 auto;
+  margin-right: 20px;
+  height: 80px;
+  width: auto;
+  padding: 15px 0 10px 20px;
+  object-fit: cover;
+  filter: brightness(80%);
+  transition: 0.5s ease;
 }
 
 .logo:hover {
@@ -56,15 +56,18 @@ nav {
 }
 
 nav a {
-    color: rgb(255, 152, 0);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem;
-    font-size: 20px;
+  color: rgb(255, 152, 0);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  font-size: 25px;
+  font-weight: bold;
+
 }
 
 nav a:hover {
-    background-color: #777;
+  background-color: #ff9800;
+
     border-radius: 20px;
     color: #f9f2e7;
 }
@@ -137,10 +140,12 @@ nav a:hover {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    padding-top: 100px;
   }
   
   .tarjeta {
     background-color: white;
+    font-size:  25px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -168,7 +173,7 @@ nav a:hover {
   }
   
   .producto-nombre {
-    font-size: 1.2em;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
@@ -236,7 +241,7 @@ nav a:hover {
     padding: 15px 40px 15px 20px;
     border-radius: 4px;
     color: white;
-    font-size: 1em;
+    font-size: 22px;
     z-index: 1000;
     display: none;
     align-items: center;
@@ -270,7 +275,7 @@ nav a:hover {
     background: none;
     border: none;
     color: white;
-    font-size: 1.2em;
+    font-size: 22px;
     cursor: pointer;
   }
   @keyframes fadeIn {
@@ -470,6 +475,7 @@ nav a:hover {
   
     .productos_contenedor {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  
     }
   
     .cart-container {

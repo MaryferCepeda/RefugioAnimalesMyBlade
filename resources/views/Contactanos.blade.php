@@ -21,10 +21,7 @@
                 />
             </a>
             <h1>Peluditos</h1>
-            <div class="menu-hamburguesa">
-                <div></div>
-                <div></div>
-                <div></div>
+            
         </div>
         
         <nav>
@@ -59,34 +56,26 @@
         </nav>
     </header>
 
+    <div class="Body2">
+
+            <aside class="RedesSociales animate">
+                <h5>COLABORACIONES EN REDES SOCIALES</h5>
+                <div class="RedesSociales-Container">
+                    <div class="RedesSociales-Card">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FMaberCaninos911%2Fposts%2Fpfbid0nfpLvoxefBPw29QUjbic9G5qz5KTbHHt9cGwCBp7iqrqvgjVs2eny9fAngnfCzHFl&show_text=true&width=500" width="500" height="706" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                    <div class="RedesSociales-Card">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FMundoPatitasOficial%2Fposts%2Fpfbid0d87zg3pBz8vwsXFaSMtXegKAh27DaZQNiUsrUAS2EQwERMbnth73Fgh9Y51jpfial&show_text=true&width=500" width="500" height="673" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                    <div class="RedesSociales-Card">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02ibp7Dd5X2Gfj67y5QPtUz6UaTThw76cHdfNntafxDYHwVSx7QBD8R1QDh22FK5RDl%26id%3D100064629196284&show_text=true&width=500" width="500" height="748" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
     <div>
-        <form action="{{route('enviarcorreo')}}" method="POST" class="vibrant-form">
-            @csrf
-            <div class="arriba">
-                <h2 class="form-title">¡Contáctanos!</h2>
-                <p class="form-description">Completa el formulario y te responderemos lo antes posible</p>
-            </div>
-            
-            <div class="form-group">
-                <label for="nombre" class="form-label">Nombre completo</label>
-                <input type="text" name="nombre" class="form-input" id="nombre" placeholder="Tu nombre completo">
-            </div>
-            <div class="form-group">
-                <label for="asunto" class="form-label">Asunto</label>
-                <input type="text" name="asunto" class="form-input" id="asunto" placeholder="El asunto del mensaje">
-            </div>
-            <div class="form-group">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" name="email" class="form-input" id="email" placeholder="ejemplo@correo.com">
-            </div>
-            <div class="form-group">
-                <label for="mensaje" class="form-label">Mensaje</label>
-                <input name="mensaje" id="mensaje" class="form-textarea" rows="4" placeholder="Escribe tu mensaje aquí"></input>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="form-button">Enviar Mensaje</button>
-            </div>
-        </form>
         
         <h1 class="encuentranos">¡Encuentranos aqui!</h1>
         <div class="caja mapa">

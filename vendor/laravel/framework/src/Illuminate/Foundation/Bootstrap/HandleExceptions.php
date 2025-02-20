@@ -8,9 +8,7 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Log\LogManager;
 use Illuminate\Support\Env;
-use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\NullHandler;
-use Monolog\Handler\SocketHandler;
 use PHPUnit\Runner\ErrorHandler;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\ErrorHandler\Error\FatalError;
@@ -54,10 +52,6 @@ class HandleExceptions
 
         if (! $app->environment('testing')) {
             ini_set('display_errors', 'Off');
-        }
-
-        if (laravel_cloud()) {
-            $this->configureCloudSocketLogChannel($app);
         }
     }
 
@@ -249,25 +243,6 @@ class HandleExceptions
     protected function fatalErrorFromPhpError(array $error, $traceOffset = null)
     {
         return new FatalError($error['message'], 0, $error, $traceOffset);
-    }
-
-    /**
-     * Configure the Laravel Cloud socket log channel.
-     *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
-     * @return void
-     */
-    protected function configureCloudSocketLogChannel(Application $app)
-    {
-        $app['config']->set('logging.channels.laravel-cloud-socket', [
-            'driver' => 'monolog',
-            'handler' => SocketHandler::class,
-            'formatter' => JsonFormatter::class,
-            'with' => [
-                'connectionString' => $_ENV['LARAVEL_CLOUD_LOG_SOCKET'] ?? '127.0.0.1:8765',
-                'persistent' => true,
-            ],
-        ]);
     }
 
     /**
