@@ -120,6 +120,19 @@
 
         .btn-edit:hover, .btn-view:hover, .btn-delete:hover {
             opacity: 0.8;
+        }.header-Izquierda {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            flex: 0 0 auto;
+            margin-right: 20px;
+            height: 80px;
+            width: auto;
+            padding: 15px 0 10px 20px;
+            object-fit: cover;
+            filter: brightness(80%);
+            transition: 0.5sease;
         }
     </style>
 </head>
@@ -128,6 +141,11 @@
         <h1>Administrar</h1>
     </header>
     <nav>
+        <div class="header-Izquierda">
+            <a href="/">
+                <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página"/>
+            </a>      
+        </div>
         <a href="{{ route('users.index') }}">Usuarios</a>
         <a href="{{ route('productos.index') }}">Productos</a>
         <a href="{{ route('proveedores.index') }}">Proovedores</a>

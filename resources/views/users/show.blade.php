@@ -120,6 +120,11 @@
         <h1>Administrar</h1>
     </header>
     <nav>
+        <div class="header-Izquierda">
+            <a href="/">
+                <img class="logo" src="/Imagenes/logo.png" alt="Logo de la página"/>
+            </a>      
+        </div>
         <a href="{{ route('users.index') }}">Usuarios</a>
         <a href="{{ route('productos.index') }}">Productos</a>
         <a href="{{ route('proveedores.index') }}">Proovedores</a>

@@ -31,6 +31,13 @@
                         </div>
                     </div>
                     <a href="/Contactanos" title="Contáctanos para cualquier aclaración">Contáctanos</a>
+                    @auth
+                        @if(Auth::user()->role === 'admin')
+                        <a href="{{ url('/users')  }}">
+                                Administrador
+                            </a>
+                        @endif
+                    @endauth
                     @guest
                     <a href="login" title="Iniciar Sesión">Inicio de Sesión</a>
                     @endguest
@@ -47,6 +54,7 @@
                         </div>
                     </div>
                     @endauth
+                    
                 </nav>
             </header>
             
