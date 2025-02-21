@@ -1,15 +1,15 @@
-
 .fondo-negro {
     background-color: #f9f2e7;
     color: black;
     padding: 2rem;
 }
+
 .logo {
     flex: 0 0 auto;
-    margin-right: 20px;
-    height: 80px;
+    margin-right: 1.25rem; /* 20px */
+    height: 5rem; /* 80px */
     width: auto;
-    padding: 15px 0 10px 20px;
+    padding: 0.9375rem 0 0.625rem 1.25rem; /* 15px 0 10px 20px */
     object-fit: cover;
     filter: brightness(80%);
     transition: 0.5s ease;
@@ -18,6 +18,7 @@
 .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 body {
     text-align: justify !important;
     margin: 0;
@@ -28,6 +29,7 @@ body {
     color: white;
     background-color: #f9f9f9;
 }
+
 header {
     position: fixed;
     top: 0;
@@ -36,12 +38,11 @@ header {
     background: #ffffff;
     color: rgb(255, 152, 0);
     display: flex;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem; /* 10px 20px */
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 10px 20px;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 2px 5px */
     box-sizing: border-box;
 }
 
@@ -49,8 +50,9 @@ header {
     display: flex;
     align-items: center;
 }
+
 .header-Izquierda h1 {
-    font-size: 35px;
+    font-size: 2.2rem; /* 35px */
     font-weight: bold;
     margin: 0;
 }
@@ -58,7 +60,7 @@ header {
 nav {
     display: flex;
     justify-content: flex-end;
-    margin-right: 70px;
+    margin-right: 4.375rem; /* 70px */
     flex-wrap: wrap;
     align-items: center;
 }
@@ -68,25 +70,23 @@ nav a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0.25rem;
-    font-size: 25px;
+    font-size: 1.5625rem; /* 25px */
     font-weight: bold;
-
 }
 
 nav a:hover {
     background-color: #ff9800;
-
-    border-radius: 20px;
+    border-radius: 1.25rem; /* 20px */
     color: #f9f2e7;
 }
 
 .header-Derecha a {
-    margin-left: 10px;
+    margin-left: 0.625rem; /* 10px */
 }
 
 .header-Derecha img {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem; /* 30px */
+    height: 1.875rem; /* 30px */
     transition: transform 0.3s;
 }
 
@@ -102,15 +102,15 @@ nav a:hover {
 }
 
 .abajo-contenido {
-    top: 30px;
-    left: 15px;
-    border-radius: 15px;
-    padding: 15px;
+    top: 1.875rem; /* 30px */
+    left: 0.9375rem; /* 15px */
+    border-radius: 0.9375rem; /* 15px */
+    padding: 0.9375rem; /* 15px */
     display: none;
     position: absolute;
     background: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    min-width: 10rem; /* 160px */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* aproximado */
     z-index: 1;
 }
 
@@ -123,32 +123,32 @@ nav a:hover {
 .abajo-contenido a:hover {
     color: white;
     background-color: #ff9800;
-
 }
 
 .abajo:hover .abajo-contenido {
     display: block;
 }
+
 main {
-    margin-top: 60px;
+    margin-top: 3.75rem; /* 60px */
     background-color: #f9f2e7;
     color: black;
     flex: 1;
-
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 2rem;
 }
+
 footer {
     background: linear-gradient(45deg, #000000, #2f2f2f);
     color: white;
     text-align: center;
     padding: 2rem;
     position: relative;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-    font-size: 20px;
+    box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* 4px 8px */
+    font-size: 1.25rem; /* 20px */
     z-index: 10;
     text-align: center !important;
 }
@@ -162,32 +162,34 @@ footer p {
 footer::before {
     content: "";
     position: absolute;
-    top: -10px;
+    top: -0.625rem; /* -10px */
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    height: 5px;
+    height: 0.3125rem; /* 5px */
     background: #fff;
-    border-radius: 5px;
+    border-radius: 0.3125rem; /* 5px */
 }
 
 footer p span {
     color: #ff9800;
 }
+
 .historia {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
     background-color: #f9f2e7;
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px */
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 1200px;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    max-width: 75rem; /* 1200px */
     margin: 2rem auto;
 }
+
 .imagen-container {
-    flex: 1 1 300px;
+    flex: 1 1 18.75rem; /* 300px */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,36 +197,37 @@ footer p span {
 
 .mascota-imagen {
     width: 100%;
-    max-width: 300px;
+    max-width: 18.75rem; /* 300px */
     border-radius: 50%;
-    border: 4px solid #ff9800;
+    border: 0.25rem solid #ff9800; /* 4px */
 }
+
 .descripcion-container {
     font-family: "Arial", sans-serif;
-    flex: 2 1 400px;
+    flex: 2 1 25rem; /* 400px */
     text-align: justify;
 }
 
 .descripcion-container h2 {
     color: #ff9800;
     margin-bottom: 1rem;
-    font-size: 29px;
+    font-size: 1.8125rem; /* 29px */
 }
 
 .descripcion-container p {
     margin-bottom: 1rem;
     line-height: 1.6;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     color: black;
 }
+
 .btn-conocer {
     margin-top: 1rem;
     padding: 0.8rem 1.5rem;
     background: #ff9800;
-    
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     border: none;
-    border-radius: 4px;
+    border-radius: 0.25rem; /* 4px */
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -252,19 +255,20 @@ footer p span {
 .problem,
 .solution,
 .cta {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1.25rem auto; /* 20px */
+    padding: 1.25rem; /* 20px */
+    max-width: 50rem; /* 800px */
+    border-radius: 0.625rem; /* 10px */
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1); /* aproximado */
     background-color: #ffffff;
 }
+
 .intro {
     text-align: center;
 }
 
 .intro p {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     color: #555;
 }
 
@@ -274,72 +278,77 @@ footer p span {
 }
 
 .intro ul li {
-    font-size: 20px;
-    margin: 5px 0;
+    font-size: 1.25rem; /* 20px */
+    margin: 0.3125rem 0; /* 5px */
     display: flex;
     align-items: center;
 }
 
 .intro ul li::before {
     content: "❤";
-    margin-right: 10px;
+    margin-right: 0.625rem; /* 10px */
 }
+
 .impact h2 {
     color: #ff9800;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     text-align: center;
 }
 
 .impact p {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     text-align: center;
     color: #444;
 }
+
 .problem h2 {
     color: #f44336;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     text-align: center;
 }
 
 .problem ul {
-    margin: 15px 0;
-    padding-left: 20px;
+    margin: 0.9375rem 0; /* 15px */
+    padding-left: 1.25rem; /* 20px */
 }
 
 .problem ul li {
-    font-size: 20px;
-    margin: 5px 0;
+    font-size: 1.25rem; /* 20px */
+    margin: 0.3125rem 0; /* 5px */
 }
+
 .solution h2 {
     color: #4caf50;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     text-align: center;
 }
 
 .solution ul {
-    margin: 15px 0;
-    padding-left: 20px;
+    margin: 0.9375rem 0; /* 15px */
+    padding-left: 1.25rem; /* 20px */
 }
 
 .solution ul li {
-    font-size: 20px;
-    margin: 5px 0;
+    font-size: 1.25rem; /* 20px */
+    margin: 0.3125rem 0; /* 5px */
 }
+
 .cta h2 {
     color: #4c78af;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     text-align: center;
 }
 
 .cta ul {
-    margin: 15px 0;
-    padding-left: 20px;
+    margin: 0.9375rem 0; /* 15px */
+    padding-left: 1.25rem; /* 20px */
 }
 
 .cta ul li {
-    font-size: 20px;
-    margin: 5px 0;
+    font-size: 1.25rem; /* 20px */
+    margin: 0.3125rem 0; /* 5px */
 }
+
 strong {
     color: #333;
     font-weight: bold;
@@ -347,7 +356,7 @@ strong {
 
 .animate {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.25rem); /* 20px */
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -356,9 +365,10 @@ strong {
     transform: translateY(0);
 }
 
-.Parrafos{
-    font-size: 20px;
+.Parrafos {
+    font-size: 1.25rem; /* 20px */
 }
-.h3{
-    font-size: 20px;
+
+.h3 {
+    font-size: 1.25rem; /* 20px */
 }

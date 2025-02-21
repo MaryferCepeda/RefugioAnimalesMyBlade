@@ -6,8 +6,49 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="{{ asset('css/Productos.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/responsive/Pagina_Inicial_resposive.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/btn_Accesibilidad.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/btn_Accesibilidad.css') }}">
   <title>Peluditos | Tienda de Apoyo</title>
+  
+  <!-- Estilos para notificaciones -->
+  <style>
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 4px;
+      z-index: 9999;
+      min-width: 250px;
+      display: none;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .notification.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .notification.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .notification.show {
+      display: block;
+    }
+    .notification.hide {
+      display: none;
+    }
+    .notification button {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -18,10 +59,10 @@
       </a>
       <h1>Peluditos</h1>
       <div class="menu-hamburguesa">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-     </div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <nav>
       <a href="/" title="Este es el menu principal">Inicio</a>
@@ -115,26 +156,24 @@
     </div>
   </footer>
 
-
   <button id="botonAccesibilidad" class="boton-accesibilidad" aria-label="Opciones de accesibilidad">
-            <img src="/Imagenes/accessibilidad.png" alt="Icono de accesibilidad" width="30" height="30">
-        </button>
+    <img src="/Imagenes/accessibilidad.png" alt="Icono de accesibilidad" width="30" height="30">
+  </button>
 
-        <div id="panelAccesibilidad" class="panel-accesibilidad">
-            <h2>Opciones de Accesibilidad</h2>
-            <label for="tamanoFuente">Tamaño de letra:</label>
-            <label>
-            <label>
-            <label>
-            <input type="range" id="tamanoFuente" min="1" max="4" step="1" value="2">
-                <div class="etiquetas-tamano-fuente">
-                    <span>Pequeña</span>
-                    <span>Media</span>
-                    <span>Grande</span>
-                    <span>Mega</span>
-                </div>
-            </div>
-        </div>
+  <div id="panelAccesibilidad" class="panel-accesibilidad">
+    <h2>Opciones de Accesibilidad</h2>
+    <label for="tamanoFuente">Tamaño de letra:</label>
+    <label>
+    <label>
+    <label>
+    <input type="range" id="tamanoFuente" min="1" max="4" step="1" value="2">
+    <div class="etiquetas-tamano-fuente">
+      <span>Pequeña</span>
+      <span>Media</span>
+      <span>Grande</span>
+      <span>Mega</span>
+    </div>
+  </div>
 
   <script>
     let cart = [];
@@ -161,7 +200,7 @@
     function removeFromCart(productId) {
       cart = cart.filter(item => item.id !== productId);
       updateCartDisplay();
-      showNotification('Producto eliminado del carrito');
+      showNotification('Producto eliminado del carrito', 'success');
     }
 
     function updateCartDisplay() {
@@ -242,28 +281,43 @@
         notification.classList.remove('hide');
       }, 500);
     }
+
     function renderPayPalButton() {
-      const paypalButtonContainer = document.getElementById('paypal-button');
-      paypalButtonContainer.innerHTML = '';
-      window.paypal.Buttons({
-        fundingSource: window.paypal.FUNDING.CARD,
-        createOrder: function(data, actions) {
-          const amount = document.getElementById("donation-amount").value || "0.00";
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: amount }
-            }]
-          });
-        },
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-            alert("Pago completado por " + details.payer.name.given_name);
-            cart = [];
-            updateCartDisplay();
-          });
-        }
-      }).render("#paypal-button");
-    }
+    const paypalButtonContainer = document.getElementById('paypal-button');
+    paypalButtonContainer.innerHTML = '';
+    window.paypal.Buttons({
+      style: {
+        layout: 'horizontal',
+        size: 'large',
+        shape: 'rect',
+        height: 26  // Ajusta la altura permitida (valor entre 25 y 55)
+      },
+      fundingSource: window.paypal.FUNDING.CARD,
+      createOrder: function(data, actions) {
+        const amount = document.getElementById("donation-amount").value || "0.00";
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: amount }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert("Pago completado por " + details.payer.name.given_name);
+          cart = [];
+          updateCartDisplay();
+        });
+      }
+    }).render("#paypal-button").then(() => {
+      // Escalamos el contenedor para agrandar el botón
+      paypalButtonContainer.style.transform = "scale(1.1)";
+      paypalButtonContainer.style.transformOrigin = "top left";
+      // Ajustamos el ancho y la altura del contenedor si es necesario
+      paypalButtonContainer.style.width = "90%";
+      paypalButtonContainer.style.height = "auto";
+    });
+  }
+
     function updatePaypalButton(totalAmount) {
       document.getElementById("donation-amount").value = totalAmount.toFixed(2);
       const paypalButtonContainer = document.getElementById('paypal-button');
@@ -280,34 +334,30 @@
     };
     document.body.appendChild(script);
 
-
-
-
-
     document.addEventListener('DOMContentLoaded', function() {
-            const menuHamburguesa = document.querySelector('.menu-hamburguesa');
-            const nav = document.querySelector('nav');
+      const menuHamburguesa = document.querySelector('.menu-hamburguesa');
+      const nav = document.querySelector('nav');
 
-            menuHamburguesa.addEventListener('click', function() {
-                menuHamburguesa.classList.toggle('activo');
-                nav.classList.toggle('activo');
-            });
-            document.querySelectorAll('nav a').forEach(enlace => {
-                enlace.addEventListener('click', () => {
-                    menuHamburguesa.classList.remove('activo');
-                    nav.classList.remove('activo');
-                });
-            });
-            const desplegables = document.querySelectorAll('.abajo');
-            desplegables.forEach(desplegable => {
-                desplegable.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        this.classList.toggle('activo');
-                    }
-                });
-            });
+      menuHamburguesa.addEventListener('click', function() {
+        menuHamburguesa.classList.toggle('activo');
+        nav.classList.toggle('activo');
+      });
+      document.querySelectorAll('nav a').forEach(enlace => {
+        enlace.addEventListener('click', () => {
+          menuHamburguesa.classList.remove('activo');
+          nav.classList.remove('activo');
         });
+      });
+      const desplegables = document.querySelectorAll('.abajo');
+      desplegables.forEach(desplegable => {
+        desplegable.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            this.classList.toggle('activo');
+          }
+        });
+      });
+    });
   </script>
 
   <style>
@@ -339,7 +389,6 @@
     }
   </style>
 
-<script src="{{ asset('js/btn_Accesibilidad.js') }}"></script>
+  <script src="{{ asset('js/btn_Accesibilidad.js') }}"></script>
 </body>
 </html>
-

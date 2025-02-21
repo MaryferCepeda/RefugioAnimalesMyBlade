@@ -1,0 +1,131 @@
+parameters:
+    scanFiles:
+        - lazy/Carbon/MessageFormatter/MessageFormatterMapperStrongType.php
+        - lazy/Carbon/TranslatorStrongType.php
+        - lazy/Carbon/UnprotectedDatePeriod.php
+        - tests/Fixtures/DateMalformedIntervalStringException.php
+        - tests/Fixtures/DateMalformedStringException.php
+        - vendor/autoload.php
+    level: 3
+    paths:
+        - src
+        - tests
+    parallel:
+        processTimeout: 300.0
+    ignoreErrors:
+        - '#^Call to static method get\(\) on an unknown class Symfony\\Component\\Translation\\PluralizationRules\.$#'
+        - '#^Call to an undefined static method#'
+        - '#^Call to an undefined method Carbon\\Carbon(Immutable)?::floatDiffIn([A-Za-z]+)\(\)\.$#'
+        - '#^Call to an undefined method Carbon\\Carbon(Immutable)?::(diffInBusinessDays|diffInReal([A-Za-z]+))\(\)\.$#'
+        - '#^Call to an undefined method Carbon\\Carbon(Immutable)?::(add|sub)Real([A-Za-z]+)\(\)\.$#'
+        - '#^Unsafe usage of new static\(\)\.$#'
+        - '#^Method Carbon\\Carbon(Interface|Immutable)?::(add|sub)[A-Z][A-Za-z]+\(\) invoked with 1 parameter, 0 required\.$#'
+        - '#^Call to an undefined method Carbon\\Carbon(Interface|Immutable)?::(super|noThis|toAppTz|copyWithAppTz)\(\)\.$#'
+        - '#^Call to an undefined method Carbon\\CarbonInterval::(multiply|andAgain|copyAndAgain)\(\)\.$#'
+        - '#^Call to an undefined method Carbon\\CarbonPeriod::(oneMoreDay|copyOneMoreDay|endNextDay)\(\)\.$#'
+        - '#should return (\S*)(static|\$this)\(Carbon\\Carbon\)(\|null)? but returns Carbon\\Carbon(Interface)?(\|null)?\.$#'
+        - '#should return (\S*)(static|\$this)\(Carbon\\CarbonImmutable\)(\|null)? but returns Carbon\\Carbon(Immutable|Interface)(\|null)?\.$#'
+        - '#should return (\S*)\$this\(Carbon\\CarbonInterval\)(\|null)? but returns static\(Carbon\\CarbonInterval\)(\|null)?\.$#'
+        - '#should return (\S*)static\(Carbon\\CarbonInterval\)(\|null)? but returns Carbon\\CarbonInterval(\|null)?\.$#'
+        - '#^Call to an undefined method DateInterval::(spec|optimize)\(\)\.$#'
+        - '#^Property Carbon\\Carbon::\$timezone \(Carbon\\CarbonTimeZone\) does not accept string\.$#'
+        - '#^Method class@anonymous/tests/Carbon/TestingAidsTest\.php:\d+::modify\(\) should return class@anonymous/tests/Carbon/TestingAidsTest\.php:\d+ but returns \(?DateTimeImmutable#'
+        -
+            message: '#^Undefined variable: \$this$#'
+            paths:
+                - src/Carbon/Traits/Mixin.php
+        -
+            message: '#^Variable \$this in isset\(\) is never defined\.$#'
+            paths:
+                - src/Carbon/Traits/Mixin.php
+        -
+            message: '#^Call to an undefined method Carbon\\Carbon::[a-zA-Z]+Of[a-zA-Z]+\(\)\.$#'
+            paths:
+                - tests/Carbon/SettersTest.php
+        -
+            message: "#^Property Carbon\\\\Carbon\\:\\:\\$month \\(int\\) does not accept Carbon\\\\Month\\:\\:February\\.$#"
+            paths:
+                - tests/Carbon/SettersTest.php
+        -
+            message: '#^Access to an undefined property Carbon\\CarbonImmutable::\$[a-zA-Z]+\.$#'
+            paths:
+                - tests/CarbonImmutable/GettersTest.php
+        -
+            message: '#^Call to an undefined method Carbon\\CarbonImmutable::[a-zA-Z]+Of[a-zA-Z]+\(\)\.$#'
+            paths:
+                - tests/CarbonImmutable/GettersTest.php
+        -
+            message: '#^Access to an undefined property Carbon\\CarbonInterval::\$tz_?[Nn]ame\.$#'
+            paths:
+                - tests/CarbonInterval/GettersTest.php
+                - tests/CarbonInterval/SettersTest.php
+        -
+            message: '#^Access to an undefined property Carbon\\CarbonPeriod::\$(include)?(Start|End)Date\.$#'
+            paths:
+                - tests/CarbonPeriod/GettersTest.php
+        -
+            message: '#^Access to protected property Carbon\\CarbonPeriod::\$endDate\.$#'
+            paths:
+                - tests/CarbonPeriod/GettersTest.php
+        -
+            message: '#^Cannot access property \$locale on Carbon\\CarbonPeriod\|string\.$#'
+            paths:
+                - tests/CarbonPeriod/GettersTest.php
+        -
+            message: '#^Access to protected property Carbon\\CarbonPeriod::\$startDate\.$#'
+            paths:
+                - tests/CarbonPeriod/GettersTest.php
+        -
+            message: '#^Access to an undefined property Carbon\\CarbonPeriod::\$locale\.$#'
+            paths:
+                - tests/CarbonPeriod/GettersTest.php
+        -
+            message: '#^Parameter \$foo of anonymous function has invalid type Tests\\Factory\\FooBar\.#'
+            paths:
+                - tests/Factory/CallbackTest.php
+        -
+            message: '#^Call to an undefined method Tests\\Carbon(Immutable)?\\MacroTest::diffInYears\(\)\.#'
+            paths:
+                - tests/Carbon/MacroTest.php
+                - tests/CarbonImmutable/MacroTest.php
+        -
+            message: '#^Call to an undefined method SubCarbon(Immutable)?::diffInDecades\(\)\.#'
+            paths:
+                - tests/Carbon/MacroTest.php
+                - tests/CarbonImmutable/MacroTest.php
+        -
+            message: '#^Call to an undefined method Doctrine\\DBAL\\Types\\Type::requiresSQLCommentHint\(\)\.#'
+            paths:
+                - tests/Doctrine/CarbonTypesTest.php
+        -
+            message: '#^Instantiated class Doctrine\\DBAL\\Platforms\\MySQL57Platform not found\.#'
+            paths:
+                - tests/Doctrine/CarbonTypesTest.php
+        -
+            message: '#^Call to an undefined method Symfony\\Contracts\\Translation\\TranslatorInterface::getMessages\(\)\.#'
+            paths:
+                - tests/CarbonInterval/ConstructTest.php
+        -
+            message: '#^Access to protected property Carbon\\CarbonPeriod::\$dateInterval\.#'
+            paths:
+                - tests/CarbonPeriod/CreateTest.php
+    excludePaths:
+        - '*/src/Carbon/CarbonPeriod.php'
+        - '*/src/Carbon/Laravel/ServiceProvider.php'
+        - '*/src/Carbon/TranslatorWeakType.php'
+        - '*/src/Carbon/PHPStan/*'
+        - '*/tests/Carbon/Fixtures/DumpCarbon.php'
+        - '*/tests/Carbon/LocalizationTest.php'
+        - '*/tests/Carbon/SerializationTest.php'
+        - '*/tests/Carbon/LastErrorTest.php'
+        - '*/tests/CarbonImmutable/LocalizationTest.php'
+        - '*/tests/CarbonImmutable/SetStateTest.php'
+        - '*/tests/CarbonImmutable/SerializationTest.php'
+        - '*/tests/CarbonImmutable/LastErrorTest.php'
+        - '*/tests/Laravel/*.php'
+        - '*/tests/Cli/*.php'
+        - '*/tests/Carbon/Fixtures/NoLocaleTranslator.php'
+        - '*/tests/CarbonPeriod/Fixtures/filters.php'
+        - '*/tests/Fixtures/dynamicInterval.php'
+        - '*/tests/PHPStan/*.php'
+        - '*/tests/PHPUnit/AssertObjectHasPropertyPolyfillTrait.php'

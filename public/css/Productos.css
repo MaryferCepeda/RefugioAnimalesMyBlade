@@ -29,7 +29,7 @@ header {
     align-items: center;
 }
 .header-Izquierda h1 {
-  font-size: 35px;
+  font-size: 1.4rem;
   font-weight: bold;
   margin: 0;
 }
@@ -60,7 +60,7 @@ nav a {
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin: 0.25rem;
-  font-size: 25px;
+  font-size: 1.4rem;
   font-weight: bold;
 
 }
@@ -145,7 +145,7 @@ nav a:hover {
   
   .tarjeta {
     background-color: white;
-    font-size:  25px;
+    font-size:  1.4rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -173,7 +173,7 @@ nav a:hover {
   }
   
   .producto-nombre {
-    font-size: 26px;
+    font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;

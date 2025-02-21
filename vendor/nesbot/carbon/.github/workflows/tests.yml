@@ -1,0 +1,118 @@
+name: Tests
+
+on: [ pull_request, push ]
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu, windows]
+        php: [8.1, 8.2, 8.3, 8.4]
+        setup: [lowest, stable]
+        include:
+          - php: 8.1
+            os: ubuntu
+            setup: stable
+            classmap-authoritative: true
+
+          - php: 8.2
+            os: ubuntu
+            setup: stable
+            coverage: true
+
+          - php: 8.3
+            os: ubuntu
+            setup: stable
+            phpunit: 11
+
+    name: ${{ matrix.phpunit && format('PHPUnit {0} - ', matrix.phpunit) || '' }}${{ matrix.classmap-authoritative && 'classmap-authoritative - ' || '' }}${{ matrix.coverage && 'Coverage - ' || '' }}PHP ${{ matrix.php }} - ${{ matrix.setup || 'stable' }} - ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: json, msgpack
+          ini-values: error_reporting=${{ (matrix.setup != 'lowest') && '32767' || '8191' }}
+          tools: composer:v2
+          coverage: ${{ matrix.coverage && 'pcov' || 'none' }}
+
+      - name: Install locales
+        if: matrix.os == 'ubuntu'
+        run: |
+          sudo apt-get update || apt --fix-broken install || echo 'Apt failure ignored'
+          sudo apt-get install tzdata locales -y && sudo locale-gen fr_FR.UTF-8 sr_ME.UTF-8 ar_AE.UTF-8 zh_TW.UTF-8 zh_CN.UTF-8 yo_NG.UTF-8 en_US.UTF-8 || echo 'Apt failure ignored'
+
+      - name: Get composer cache directory
+        id: composer-cache
+        shell: bash
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: "php-${{ matrix.php }}-${{ matrix.setup }}-${{ matrix.os }}-${{ matrix.phpunit }}-${{ hashFiles('**/composer.json') }}"
+          restore-keys: "php-${{ matrix.php }}-${{ matrix.setup }}-${{ matrix.os }}-${{ matrix.phpunit }}-${{ hashFiles('**/composer.json') }}"
+
+      - name: Select PHPUnit version
+        if: matrix.phpunit
+        shell: bash
+        run: composer require --no-update --no-interaction --dev "phpunit/phpunit:^${{ matrix.phpunit }}"
+
+      - name: Remove conflicting optional dependencies
+        if: matrix.phpunit >= 11
+        run: composer remove --no-update --no-interaction --dev ondrejmirtes/better-reflection
+
+      - name: Downgrade nikic/php-parser
+        if: matrix.phpunit < 11
+        shell: bash
+        run: composer require --no-update --no-interaction --dev "nikic/php-parser:^4"
+
+      - name: Updgrade symfony/translation
+        if: matrix.php >= 8.4
+        shell: bash
+        run: composer require --no-update --no-interaction "symfony/translation:^5.4.35||^6.3.12||^7.0.3" "symfony/contracts:^2.5.3||>=3.4.2" "sebastian/exporter:>5.1.2"
+        # https://github.com/symfony/symfony/commit/f4118e110a46de3ffb799e7d79bf15128d1646ea
+
+      - name: Install dependencies
+        uses: nick-fields/retry@v3
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: |
+            composer remove --no-update --no-interaction --dev phpmd/phpmd friendsofphp/php-cs-fixer kylekatarnls/multi-tester;
+            composer update --prefer-dist --no-progress --prefer-${{ matrix.setup || 'stable' }} ${{ matrix.classmap-authoritative && '--classmap-authoritative' || '' }}${{ matrix.php >= 8.2 && ' --ignore-platform-reqs' || '' }};
+
+      - name: Run test suite
+        if: matrix.coverage != true
+        run: php -d memory_limit=-1 -d zend.enable_gc=0 -d error_reporting=-1 vendor/phpunit/phpunit/phpunit --display-incomplete --display-skipped --display-deprecations --display-errors --display-notices --display-warnings
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+
+      - name: Run test suite with coverage
+        if: matrix.coverage
+        run: php -d memory_limit=-1 -d zend.enable_gc=0 -d error_reporting=-1 vendor/phpunit/phpunit/phpunit --coverage-clover=clover.xml --coverage-text
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+
+      - name: Code Climate Test Reporter
+        if: matrix.coverage
+        uses: aktions/codeclimate-test-reporter@v1
+        with:
+          codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+          command: after-build -t clover
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        continue-on-error: true
+
+      - name: Coverage
+        if: matrix.coverage
+        uses: codecov/codecov-action@v5
