@@ -10,22 +10,18 @@
             margin: 0;
             padding: 0;
             background-color: #f8f9fa;
-            margin-top: 150px;
-            margin-left: 200px;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1000px;
-            margin: 50px auto;
+            margin: 200px;
+            margin-left:500px;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-        }
-
-        h1 {
-            color: #343a40;
-            margin-bottom: 20px;
         }
 
         .btn {
@@ -95,7 +91,7 @@
         header {
             width: 100%;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #ff9800;
             color: white;
             text-align: center;
             position: fixed;

@@ -23,9 +23,6 @@
             border-radius: 5px;
         }
 
-        h1 {
-            color: #343a40;
-        }
 
         .btn {
             padding: 10px 20px;
@@ -52,6 +49,7 @@
 
         .btn-danger {
             background-color: #dc3545;
+            
         }
 
         .table {
@@ -109,7 +107,7 @@
         header {
             width: 100%;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #ff9800;
             color: white;
             text-align: center;
             position: fixed;
@@ -132,7 +130,11 @@
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-        }.header-Izquierda {
+        }
+        nav a:hover {
+            background-color: #495057;
+        }
+        .header-Izquierda {
             display: flex;
             align-items: center;
         }

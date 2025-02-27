@@ -1,9 +1,9 @@
 .logo {
     flex: 0 0 auto;
-    margin-right: 20px;
-    height: 80px;
+    margin-right: 1.25rem; /* 20px */
+    height: 5rem; /* 80px */
     width: auto;
-    padding: 15px 0 10px 20px;
+    padding: 0.9375rem 0 0.625rem 1.25rem; /* 15px 0 10px 20px */
     object-fit: cover;
     filter: brightness(80%);
     transition: 0.5s ease;
@@ -43,7 +43,7 @@ header {
     align-items: center;
 }
 .header-Izquierda h1 {
-    font-size: 35px;
+    font-size: 2.2rem; /* 35px */
     font-weight: bold;
     margin: 0;
 }
@@ -52,7 +52,7 @@ header {
 nav {
     display: flex;
     justify-content: flex-end;
-    margin-right: 70px;
+    margin-right: 4.375rem; /* 70px */
     flex-wrap: wrap;
     align-items: center;
 }
@@ -62,7 +62,7 @@ nav a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0.25rem;
-    font-size: 25px;
+    font-size: 1.5625rem;;
     font-weight: bold;
 
 }
@@ -208,14 +208,15 @@ nav a:hover {
    
 }
 footer {
-    background: linear-gradient(45deg, #000000, #2f2f2f); 
+    background: linear-gradient(45deg, #000000, #2f2f2f);
     color: white;
     text-align: center;
     padding: 2rem;
     position: relative;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-    font-size: 1.2rem;
+    box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* 4px 8px */
+    font-size: 1.25rem; /* 20px */
     z-index: 10;
+    text-align: center !important;
 }
 
 footer p {
@@ -334,12 +335,12 @@ background-color: #ff9800;
 }
 .arriba{
     text-align: center;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 .encuentranos{
     color: #FF8C00;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.5rem;
 }
 
 .RedesSociales {
@@ -354,7 +355,7 @@ background-color: #ff9800;
 }
 
 .RedesSociales h5 {
-    font-size: 20px;
+    font-size: 1.5;
     color: #ff9800;
     font-weight: 600;
    

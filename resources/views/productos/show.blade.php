@@ -23,11 +23,7 @@
             border-radius: 5px;
         }
 
-        h1 {
-            color: #343a40;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        
 
         .details {
             margin-bottom: 20px;
@@ -56,7 +52,7 @@
         header {
             width: 100%;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #ff9800;
             color: white;
             text-align: center;
             position: fixed;

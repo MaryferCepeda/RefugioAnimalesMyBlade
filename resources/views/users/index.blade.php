@@ -17,7 +17,7 @@
         header {
             width: 100%;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #ff9800;
             color: white;
             text-align: center;
             position: fixed;
@@ -55,10 +55,6 @@
             flex-grow: 1;
             margin-left: 350px;
             margin-top: 200px;
-        }
-
-        h1 {
-            color: #343a40;
         }
 
         .btn {
@@ -117,14 +113,9 @@
             align-items: center;
         }
         .logo {
-            flex: 0 0 auto;
-            margin-right: 20px;
             height: 80px;
-            width: auto;
             padding: 15px 0 10px 20px;
-            object-fit: cover;
             filter: brightness(80%);
-            transition: 0.5sease;
         }
     </style>
 </head>
@@ -132,6 +123,7 @@
     <header>
         <h1>Administrar</h1>
     </header>
+
     <nav>
         <div class="header-Izquierda">
             <a href="/">

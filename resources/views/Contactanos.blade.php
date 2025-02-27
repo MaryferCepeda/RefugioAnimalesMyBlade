@@ -28,7 +28,7 @@
             <a href="/" title="Este es el menú principal">Inicio</a>
             <a href="/Nosotros" title="Conócenos">Nosotros</a>
             <div class="abajo">
-                <a href="#" class="dropbtn">Formas de Apoyoㅤ⧪</a>
+                <a href="#" class="dropbtn">Formas de Apoyoㅤ🡇</a>
                 <div class="abajo-contenido">
                     <a href="/Donar">Donativos</a>
                     <a href="/Productos">Productos</a>

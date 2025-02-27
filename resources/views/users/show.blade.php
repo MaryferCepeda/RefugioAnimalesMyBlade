@@ -18,7 +18,7 @@
         header {
             width: 100%;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #ff9800;
             color: white;
             text-align: center;
             position: fixed;
@@ -58,9 +58,7 @@
             margin-top: 200px;
         }
 
-        h1 {
-            color: #343a40;
-        }
+        
 
         .btn {
             padding: 10px 20px;

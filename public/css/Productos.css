@@ -35,10 +35,10 @@ header {
 }
 .logo {
   flex: 0 0 auto;
-  margin-right: 20px;
-  height: 80px;
+  margin-right: 1.25rem; /* 20px */
+  height: 5rem; /* 80px */
   width: auto;
-  padding: 15px 0 10px 20px;
+  padding: 0.9375rem 0 0.625rem 1.25rem; /* 15px 0 10px 20px */
   object-fit: cover;
   filter: brightness(80%);
   transition: 0.5s ease;
@@ -48,11 +48,11 @@ header {
     filter: drop-shadow(0 0 2em #646cffaa);
 }
 nav {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 70px;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 4.375rem; /* 70px */
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 nav a {
@@ -60,7 +60,7 @@ nav a {
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin: 0.25rem;
-  font-size: 1.4rem;
+  font-size: 1.5625rem;;
   font-weight: bold;
 
 }
@@ -234,14 +234,12 @@ nav a:hover {
     background-color: #d0d0d0;
   }
   .notification {
-    position: fixed;
-    top: 100px; 
     left: 88%;
     transform: translateX(-50%);
-    padding: 15px 40px 15px 20px;
+    padding-top: 100px;
     border-radius: 4px;
     color: white;
-    font-size: 22px;
+    font-size: 1.5rem;
     z-index: 1000;
     display: none;
     align-items: center;
